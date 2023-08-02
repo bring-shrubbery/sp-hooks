@@ -1,0 +1,1 @@
+# useSearchParamsState for Next.js

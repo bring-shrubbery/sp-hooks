@@ -1,0 +1,33 @@
+{
+  "name": "@use-search-params-state/nextjs",
+  "version": "0.0.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.tsx --format cjs,esm --dts --external react",
+    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "lint": "tsc"
+  },
+  "dependencies": {
+    "@use-search-params-state/react": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "@use-search-params-state/eslint-config": "workspace:*",
+    "eslint": "^7.32.0",
+    "next": "^13.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.5.2",
+    "zod": "^3.21.4"
+  },
+  "peerDependencies": {
+    "next": "^13.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zod": "^3.21.4"
+  }
+}

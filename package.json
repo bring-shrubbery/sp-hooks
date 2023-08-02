@@ -1,18 +1,28 @@
 {
   "private": true,
+  "engines": {
+    "node": ">=v18.17.0"
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "@turbo/gen": "^1.9.7",
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "prettier": "^2.5.1",
-    "turbo": "latest"
+    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo clean",
+    "lint": "turbo lint && manypkg check",
+    "lint:fix": "turbo lint:fix && manypkg fix",
+    "type-check": "turbo type-check"
   },
   "packageManager": "pnpm@7.15.0",
-  "name": "use-search-params-state-final"
+  "name": "use-search-params-state",
+  "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
+    "@manypkg/cli": "^0.21.0",
+    "@use-search-params-state/eslint-config": "workspace:*",
+    "eslint": "^7.32.0",
+    "prettier": "^2.5.1",
+    "prettier-plugin-tailwindcss": "^0.4.1",
+    "turbo": "latest",
+    "typescript": "^5.1.6"
+  }
 }

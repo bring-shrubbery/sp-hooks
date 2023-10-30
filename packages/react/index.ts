@@ -108,6 +108,7 @@ const getStateFromParams = <
  * - [ ] saveSearchParams function updates search params outside of the hook.
  * - [ ] Optional parameters.
  * - [ ] SSR function to parse searchParams once.
+ * - [ ] Zod schema should be optional, but if provided, it has to be type-safe.
  * - [x] Zod schema has to be an object first, even for single param.
  * - [ ] Array field support, allowing to have multi-value parameters.
  */

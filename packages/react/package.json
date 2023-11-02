@@ -14,17 +14,17 @@
     "lint": "tsc"
   },
   "devDependencies": {
-    "@types/react": "^18.2.18",
-    "@types/react-dom": "^18.2.7",
+    "@types/react": "^18.2.34",
+    "@types/react-dom": "^18.2.14",
     "@use-search-params-state/eslint-config": "workspace:*",
-    "eslint": "^7.32.0",
-    "next": "^13.4.1",
+    "eslint": "^8.52.0",
+    "next": "^14.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsconfig": "workspace:*",
     "tsup": "^7.2.0",
-    "typescript": "^4.5.2",
-    "zod": "^3.21.4"
+    "typescript": "^5.2.2",
+    "zod": "^3.22.4"
   },
   "peerDependencies": {
     "react": "^18.2.0",

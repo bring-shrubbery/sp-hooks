@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { ReadonlyURLSearchParams } from "next/navigation";
 
-import type { ZodObject, ZodRawShape, infer as ZodInfer } from "zod";
+import type { ZodObject, ZodRawShape, infer as ZodInfer, SomeZodObject } from "zod";
 
 export type SetStateType<S extends ZodObject<R>, R extends ZodRawShape> = <
   T extends ZodInfer<S>,
@@ -10,13 +10,6 @@ export type SetStateType<S extends ZodObject<R>, R extends ZodRawShape> = <
   key: K,
   value: T[K]
 ) => void;
-
-export interface UseSearchParamsStateOptions {
-  /**
-   * @default true
-   */
-  removeFalsyValues?: boolean;
-}
 
 const getDefaultValueObject = <S extends ZodObject<R>, R extends ZodRawShape>(
   schema: S
@@ -113,17 +106,41 @@ const getStateFromParams = <
  * - [ ] Array field support, allowing to have multi-value parameters.
  */
 
+export type UseSearchParamsStateParams = <
+  ZodSchema extends SomeZodObject = SomeZodObject
+>{
+  // Required properties
+
+  searchParams: URLSearchParams | ReadonlyURLSearchParams;
+  saveSearchParams: (newSearchParams?: URLSearchParams) => void;
+  
+  // Optional properties
+  
+  /**
+   * Default values will be used in the case that the search param
+   * you're accessing does not contain a value. We recommend always
+   * providing default values for your search params.
+   */
+  defaultValues?: Record<string, unknown>;
+
+  /**
+   * Zod schema 
+   */
+  zodSchema?: ZodSchema;
+
+
+  /**
+   * @default true
+   */
+  removeDefaultValues?: boolean;
+}
+
 export function useSearchParamsState<
   S extends ZodObject<R>,
   R extends ZodRawShape,
   T extends ZodInfer<S>
 >(
-  p: {
-    searchParams: URLSearchParams | ReadonlyURLSearchParams;
-    saveSearchParams: (newSearchParams?: URLSearchParams) => void;
-    schema: S;
-  },
-  options?: UseSearchParamsStateOptions
+  p: UseSearchParamsStateParams 
 ): [T, SetStateType<S, R>] {
   console.log("-------- NEW RENDER --------");
   validateSchemaFormat(p.schema);

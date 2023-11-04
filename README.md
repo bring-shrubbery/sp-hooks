@@ -1,4 +1,4 @@
-# Zod Search Params State
+# use-search-params-state
 
 ![approximate implementation preview](./assets/estimated-implementation.png)
 

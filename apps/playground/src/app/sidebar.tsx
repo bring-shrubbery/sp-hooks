@@ -1,13 +1,14 @@
 import { FileCodeIcon } from "lucide-react";
-import Link, { LinkProps } from "next/link";
-import { PropsWithChildren } from "react";
+import Link from "next/link";
+import type { PropsWithChildren } from "react";
 
 export const Sidebar = () => {
   return (
     <aside className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0">
       <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul className="space-y-2 font-medium">
-          <SidebarLink href="/default">Default</SidebarLink>
+          <SidebarLink href="/basic">Basic</SidebarLink>
+          <SidebarLink href="/with-default-values">With default values</SidebarLink>
           <SidebarLink href="/with-zod">With Zod</SidebarLink>
         </ul>
       </div>
@@ -19,7 +20,7 @@ const SidebarLink = ({
   href,
   children,
   icon = <FileCodeIcon size={20} />,
-}: PropsWithChildren<{ href: LinkProps<"href">; icon: React.ReactNode }>) => {
+}: PropsWithChildren<{ href: string; icon?: React.ReactNode }>) => {
   return (
     <li>
       <Link

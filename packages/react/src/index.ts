@@ -1,93 +1,79 @@
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import type { ReadonlyURLSearchParams } from "next/navigation";
 
-import type { ZodObject, ZodRawShape, infer as ZodInfer, SomeZodObject } from "zod";
 
-export type SetStateType<S extends ZodObject<R>, R extends ZodRawShape> = <
-  T extends ZodInfer<S>,
-  K extends keyof T
->(
-  key: K,
-  value: T[K]
-) => void;
+// export type SetStateType<S extends ZodObject<R>, R extends ZodRawShape> = <
+//   T extends ZodInfer<S>,
+//   K extends keyof T
+// >(
+//   key: K extends keyof T ? K : string,
+//   value: K extends keyof T ? T[K] : string
+// ) => void;
 
-const getDefaultValueObject = <S extends ZodObject<R>, R extends ZodRawShape>(
-  schema: S
-) => {
-  const schemaKeys = Object.keys(schema.shape);
-  const newDefaultValuesObject: Record<string, unknown> = {};
-  schemaKeys.forEach((k) => {
-    const def = schema.shape[k]?._def;
-    if (def?.typeName === "ZodDefault") {
-      newDefaultValuesObject[k] = def.defaultValue();
-    }
-  });
-  return newDefaultValuesObject;
-};
+// const getDefaultsFromSchema = <S extends ZodObject<R>, R extends ZodRawShape>(
+//   schema: S
+// ) => {
+//   const schemaKeys = Object.keys(schema.shape);
+//   const newDefaultValuesObject: Record<string, unknown> = {};
+//   schemaKeys.forEach((k) => {
+//     const def = schema.shape[k]?._def;
+//     if (def?.typeName === "ZodDefault") {
+//       newDefaultValuesObject[k] = def.defaultValue();
+//     }
+//   });
+//   return newDefaultValuesObject;
+// };
 
-const createObjectFromSearchParams = (
-  sp: URLSearchParams | ReadonlyURLSearchParams
-): Record<string, unknown> => {
-  const newObj: Record<string, unknown> = {};
-  const keys = Array.from(sp.keys());
+// function partialObjectEqual(
+//   obj1: Record<string, unknown>,
+//   obj2: Record<string, unknown>
+// ) {
+//   const keys1 = Object.keys(obj1);
+//   const keys2 = Object.keys(obj2);
 
-  for (const key of keys) {
-    newObj[key] = sp.get(key);
-  }
+//   const overlappingKeys = keys1.filter((k) => keys2.includes(k));
 
-  return newObj;
-};
+//   for (const key of overlappingKeys) {
+//     if (obj1[key] == obj2[key]) continue;
+//     else return false;
+//   }
 
-function partialObjectEqual(
-  obj1: Record<string, unknown>,
-  obj2: Record<string, unknown>
-) {
-  const keys1 = Object.keys(obj1);
-  const keys2 = Object.keys(obj2);
+//   return true;
+// }
 
-  const overlappingKeys = keys1.filter((k) => keys2.includes(k));
+// const initOptions = (options?: UseSearchParamsStateOptions) => {
+//   return {
+//     removeFalsyValues: true,
+//     ...options,
+//   } satisfies Required<UseSearchParamsStateOptions>;
+// };
 
-  for (const key of overlappingKeys) {
-    if (obj1[key] == obj2[key]) continue;
-    else return false;
-  }
+// const useDefaultValues = <S extends ZodObject<R>, R extends ZodRawShape>(
+//   schema: S
+// ) => {
+//   return useMemo(() => getDefaultValueObject(schema), [schema]);
+// };
 
-  return true;
-}
+// const validateSchemaFormat = <S extends ZodObject<R>, R extends ZodRawShape>(
+//   schema: S
+// ) => {
+//   if (schema._def.typeName !== "ZodObject") {
+//     throw new Error(
+//       "Schema has to be a Zod object. Use z.object() to define your schema."
+//     );
+//   }
+// };
 
-const initOptions = (options?: UseSearchParamsStateOptions) => {
-  return {
-    removeFalsyValues: true,
-    ...options,
-  } satisfies Required<UseSearchParamsStateOptions>;
-};
-
-const useDefaultValues = <S extends ZodObject<R>, R extends ZodRawShape>(
-  schema: S
-) => {
-  return useMemo(() => getDefaultValueObject(schema), [schema]);
-};
-
-const validateSchemaFormat = <S extends ZodObject<R>, R extends ZodRawShape>(
-  schema: S
-) => {
-  if (schema._def.typeName !== "ZodObject") {
-    throw new Error(
-      "Schema has to be a Zod object. Use z.object() to define your schema."
-    );
-  }
-};
-
-const getStateFromParams = <
-  S extends ZodObject<R>,
-  R extends ZodRawShape,
-  T extends ZodInfer<S>
->(
-  schema: S,
-  params: URLSearchParams | ReadonlyURLSearchParams
-) => {
-  return schema.parse(createObjectFromSearchParams(params)) as T;
-};
+// const getStateFromParams = <
+//   S extends ZodObject<R>,
+//   R extends ZodRawShape,
+//   T extends ZodInfer<S>
+// >(
+//   schema: S,
+//   params: URLSearchParams | ReadonlyURLSearchParams
+// ) => {
+//   return schema.parse(createObjectFromSearchParams(params)) as T;
+// };
 
 /**
  * Requirements list
@@ -106,123 +92,186 @@ const getStateFromParams = <
  * - [ ] Array field support, allowing to have multi-value parameters.
  */
 
-export type UseSearchParamsStateParams = <
-  ZodSchema extends SomeZodObject = SomeZodObject
->{
-  // Required properties
-
+export type UseSerachParamsStateBase = {
   searchParams: URLSearchParams | ReadonlyURLSearchParams;
-  saveSearchParams: (newSearchParams?: URLSearchParams) => void;
-  
-  // Optional properties
-  
+  setSearchParams: (newSearchParams: URLSearchParams) => void;
+}
+
+export type UseSearchParamsStateOptions
+  // <
+  // TODO: Implement Zod Validation and defaultValues type inference.
+  // ZodSchema extends ZodObject<ZodSchemaRaw> | undefined,
+  // ZodSchemaRaw extends ZodRawShape,
+  // ZodSchemaType extends ZodInfer<ZodSchema>,
+  // DefaultValues extends { [K in keyof DefaultValues]: string },
+  // >
+= {
   /**
    * Default values will be used in the case that the search param
    * you're accessing does not contain a value. We recommend always
    * providing default values for your search params.
    */
-  defaultValues?: Record<string, unknown>;
+  defaultValues?: Record<string, string>;
 
   /**
    * Zod schema 
    */
-  zodSchema?: ZodSchema;
-
+  // TODO: Implement Zod Validation
+  // zodSchema?: ZodSchema ;
 
   /**
+   * If true, default values will be removed from the search params.
    * @default true
    */
   removeDefaultValues?: boolean;
+
+  /**
+   * If true, falsy values will be removed from the search params.
+   * @default true
+   */
+  removeFalsyValues?: boolean;
+
+  /**
+   * If true, keys that were initially present in the search params
+   * will be preserved even if the removeDefaultValues and
+   * removeFalsyValues options are set to true.
+   * @default false
+   */
+  preserveInitialKeys?: boolean;
 }
 
-export function useSearchParamsState<
-  S extends ZodObject<R>,
-  R extends ZodRawShape,
-  T extends ZodInfer<S>
+// const TestSchema = z.object({
+//   test1: z.coerce.string()
+// })
+
+// const testComponent = () => {
+//   const searchParams = new URLSearchParams();
+//   const setSearchParams = console.log;
+
+//   const [state, setState] = useSearchParamsState({
+//     searchParams,
+//     setSearchParams,
+//     defaultValues: {
+//       something: 'asdf'
+//     },
+//     // zodSchema: TestSchema
+//   })
+
+
+
+//   const hello = state.hello;
+
+  
+//   return null;
+// }
+
+
+
+const searchParamsToObject = (sp: URLSearchParams | ReadonlyURLSearchParams): Record<string, string> => {
+  const newObj: Record<string, string> = {};
+
+  for (const key of Array.from(sp.keys())) {
+    const value = sp.get(key);
+    if (value === null) continue;
+    newObj[key] = value;
+  }
+
+  return newObj;
+}
+
+export type UseSearchParamsStateParams = UseSerachParamsStateBase & UseSearchParamsStateOptions;
+
+export const useSearchParamsState = <
+  // ZodSchema extends ZodObject<ZodSchemaRaw>,
+  // ZodSchemaRaw extends ZodRawShape,
+  // ZodSchemaType extends ZodInfer<ZodSchema>,
+  Params extends UseSearchParamsStateParams,
 >(
-  p: UseSearchParamsStateParams 
-): [T, SetStateType<S, R>] {
-  console.log("-------- NEW RENDER --------");
-  validateSchemaFormat(p.schema);
+  p: Params
+): [
+  Record<string, string>,
+  (key: string, value: string) => void
+] => {
+  // Configure default values.
+  const opts: Params = {
+    removeDefaultValues: true,
+    removeFalsyValues: true,
+    preserveInitialKeys: false,
+    ...p
+  };
 
-  const opts = initOptions(options);
-
-  const parsedSearchParams = useMemo(
-    () => getStateFromParams<S, R, T>(p.schema, p.searchParams),
-    [p.schema, p.searchParams]
+  const spObject = Object.assign(
+    {},
+    opts.defaultValues,
+    searchParamsToObject(p.searchParams),
   );
 
   const [initiallySetKeys] = useState(Array.from(p.searchParams.keys()));
-  const defaultValues = useDefaultValues(p.schema);
-  const [s, ss] = useState<T>(parsedSearchParams);
 
-  const setState: SetStateType<S, R> = (key, value) => {
-    ss((ps) => {
-      const cleanObject = {
-        ...ps,
-        [key]: p.schema.shape[key as any]?.parse(value),
-      };
+  const setState = (key: string, value: string) => {
+    const newObject = {
+      ...spObject,
+      [key]: value,
+    }
 
-      if (opts.removeFalsyValues) {
-        Object.keys(cleanObject).forEach((k) => {
-          if (!cleanObject[k]) {
-            delete cleanObject[k];
-          }
-        });
-      }
+    const newSearchParams = getSearchParams({ newObject, options: opts, initiallySetKeys })
 
-      return cleanObject;
-    });
+    p.setSearchParams(newSearchParams)
   };
 
-  useEffect(() => {
-    const createQueryString = () => {
-      const stateKeys = Object.keys(s);
-      if (!stateKeys.length) return undefined;
-
-      const params = new URLSearchParams();
-
-      stateKeys.forEach((key) => {
-        const value = s[key];
-        if (value != defaultValues[key] || initiallySetKeys.includes(key)) {
-          params.set(key, s[key] ?? "");
-        }
-      });
-
-      return params;
-    };
-
-    const newParams = createQueryString();
-    if (!newParams) return;
-
-    const didChange = !partialObjectEqual(
-      getStateFromParams(p.schema, newParams),
-      parsedSearchParams
-    );
-
-    if (!!newParams && didChange) p.saveSearchParams(newParams);
-  }, [defaultValues, initiallySetKeys, p, parsedSearchParams, s]);
-
-  return [s, setState];
+  return [spObject, setState];
 }
 
-export const createQueryStringFromSchema = <
-  S extends ZodObject<R>,
-  R extends ZodRawShape
->(
-  searchParams: URLSearchParams | ReadonlyURLSearchParams,
-  schema: S
-): URLSearchParams | undefined => {
-  const stateKeys = Object.keys(schema.shape);
-  if (!stateKeys.length) return undefined;
+const getSearchParams = ({
+  newObject,
+  options,
+  initiallySetKeys
+}: {
+  newObject: Record<string, string>, 
+  options: UseSearchParamsStateParams,
+  initiallySetKeys: string[],
+}) => {
+  const newSearchParams = new URLSearchParams();
 
-  const newParams = new URLSearchParams();
-  const stateObject = createObjectFromSearchParams(searchParams);
+  Object.keys(newObject).forEach((k) => {
+    const v = newObject[k];
+    if (typeof v === 'undefined') return;
 
-  stateKeys.forEach((key) => {
-    const value = schema.shape[key as any]?.parse(stateObject[key]);
-    newParams.set(key, value);
+    // If the key was set initially, we want to set save it regardless of value.
+    if (options.preserveInitialKeys && initiallySetKeys.includes(k)) {
+      newSearchParams.set(k, v);
+      return;
+    }
+
+    // If the value is falsy and we want to remove falsy values, skip it.
+    if (options.removeFalsyValues && !v) return;
+
+    // If the value is the default value and we want to remove default values, skip it.
+    if (options.removeDefaultValues && v === options.defaultValues?.[k]) return;
+
+    newSearchParams.set(k, v);
   });
 
-  return newParams;
-};
+  return newSearchParams
+}
+
+// export const createQueryStringFromSchema = <
+//   S extends ZodObject<R>,
+//   R extends ZodRawShape
+// >(
+//   searchParams: URLSearchParams | ReadonlyURLSearchParams,
+//   schema: S
+// ): URLSearchParams | undefined => {
+//   const stateKeys = Object.keys(schema.shape);
+//   if (!stateKeys.length) return undefined;
+
+//   const newParams = new URLSearchParams();
+//   const stateObject = createObjectFromSearchParams(searchParams);
+
+//   stateKeys.forEach((key) => {
+//     const value = schema.shape[key as any]?.parse(stateObject[key]);
+//     newParams.set(key, value);
+//   });
+
+//   return newParams;
+// };

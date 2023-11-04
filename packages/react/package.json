@@ -18,7 +18,7 @@
     "@use-search-params-state/tsconfig": "workspace:*",
     "@types/react": "^18.2.34",
     "@types/react-dom": "^18.2.14",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "next": "^14.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

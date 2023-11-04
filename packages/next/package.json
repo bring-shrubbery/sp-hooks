@@ -16,12 +16,12 @@
   "devDependencies": {
     "@use-search-params-state/eslint-config": "workspace:*",
     "@use-search-params-state/tsconfig": "workspace:*",
-    "@types/react": "^18.2.34",
-    "@types/react-dom": "^18.2.14",
-    "eslint": "^8.52.0",
-    "next": "^14.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "next": "^14",
+    "react": "^18",
+    "react-dom": "^18",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "zod": "^3.22.4"

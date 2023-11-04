@@ -1,3 +1,4 @@
 {
-  "name": "@use-search-params-state/github"
+  "name": "@use-search-params-state/github",
+  "private": true
 }

@@ -12,8 +12,8 @@
     "build": "tsup src/index.ts --format cjs,esm --dts --external react",
     "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "lint": "eslint ./src",
+    "typecheck": "tsc",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {

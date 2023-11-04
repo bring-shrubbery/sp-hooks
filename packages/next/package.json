@@ -8,9 +8,9 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --external react --external next",
     "clean": "git clean -xdf .next .turbo node_modules",
-    "lint": "eslint .",
+    "lint": "eslint ./src",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react --external next",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc",
     "with-env": "dotenv -e ../../.env --"
   },
   "eslintConfig": {

@@ -7,10 +7,9 @@
     "clean:workspaces": "turbo clean",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
-    "release": "pnpm build && changeset publish",
+    "release": "turbo run build && changeset publish",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix && manypkg fix",
-    "publish": "pnpm build && changeset publish",
     "version": "changeset version"
   },
   "dependencies": {

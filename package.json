@@ -3,11 +3,12 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:packages": "turbo run build --filter=./packages/*",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
-    "release": "turbo run build && changeset publish",
+    "release": "pnpm build:packages && changeset publish",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix && manypkg fix",
     "version": "changeset version"

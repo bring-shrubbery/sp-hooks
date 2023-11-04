@@ -92,20 +92,12 @@ import type { ReadonlyURLSearchParams } from "next/navigation";
  * - [ ] Array field support, allowing to have multi-value parameters.
  */
 
-export type UseSerachParamsStateBase = {
+export interface UseSerachParamsStateBase {
   searchParams: URLSearchParams | ReadonlyURLSearchParams;
   setSearchParams: (newSearchParams: URLSearchParams) => void;
 }
 
-export type UseSearchParamsStateOptions
-  // <
-  // TODO: Implement Zod Validation and defaultValues type inference.
-  // ZodSchema extends ZodObject<ZodSchemaRaw> | undefined,
-  // ZodSchemaRaw extends ZodRawShape,
-  // ZodSchemaType extends ZodInfer<ZodSchema>,
-  // DefaultValues extends { [K in keyof DefaultValues]: string },
-  // >
-= {
+export interface UseSearchParamsStateOptions {
   /**
    * Default values will be used in the case that the search param
    * you're accessing does not contain a value. We recommend always

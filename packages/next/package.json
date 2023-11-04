@@ -1,17 +1,23 @@
 {
   "name": "@use-search-params-state/next",
   "version": "0.0.0",
+  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "license": "MIT",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --external react --external next",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react --external next",
-    "lint": "tsc --noEmit",
     "clean": "git clean -xdf .next .turbo node_modules",
+    "lint": "eslint .",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react --external next",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@use-search-params-state/eslint-config/base"
+    ],
+    "root": true
   },
   "dependencies": {
     "@use-search-params-state/react": "workspace:*",

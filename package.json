@@ -1,23 +1,20 @@
 {
+  "name": "use-search-params-state",
   "private": true,
-  "engines": {
-    "node": ">=v18.17.0"
-  },
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
-    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
+    "dev": "turbo run dev",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
-    "version": "changeset version",
     "publish": "pnpm build && changeset publish",
-    "type-check": "turbo type-check"
+    "type-check": "turbo type-check",
+    "version": "changeset version"
   },
-  "packageManager": "pnpm@7.15.0",
-  "name": "use-search-params-state",
   "dependencies": {
+    "@changesets/cli": "^2.26.2",
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@manypkg/cli": "^0.21.0",
     "@use-search-params-state/eslint-config": "workspace:*",
@@ -27,7 +24,8 @@
     "turbo": "latest",
     "typescript": "^5.2.2"
   },
-  "devDependencies": {
-    "@changesets/cli": "^2.26.2"
+  "packageManager": "pnpm@8.10.2",
+  "engines": {
+    "node": ">=v18.17.0"
   }
 }

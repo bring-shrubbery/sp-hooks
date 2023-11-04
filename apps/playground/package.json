@@ -6,11 +6,19 @@
     "build": "pnpm with-env next build",
     "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "pnpm with-env next dev --port 3333",
-    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
+    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
     "start": "pnpm with-env next start",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@use-search-params-state/eslint-config/base",
+      "@use-search-params-state/eslint-config/nextjs",
+      "@use-search-params-state/eslint-config/react"
+    ],
+    "root": true
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
@@ -50,8 +58,8 @@
     "cmdk": "^0.2.0",
     "date-fns": "^2.30.0",
     "dotenv-cli": "^7.3.0",
-    "eslint": "^8.52.0",
-    "lucide-react": "^0.291.0",
+    "eslint": "^8",
+    "lucide-react": "^0.292.0",
     "next-themes": "^0.2.1",
     "react-day-picker": "^8.9.1",
     "react-dom": "^18.2.0",
@@ -61,9 +69,9 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/node": "^18.18.8",
-    "@types/react": "^18.2.34",
-    "@types/react-dom": "^18.2.14",
+    "@types/node": "^18",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@use-search-params-state/eslint-config": "workspace:*",
     "@use-search-params-state/tsconfig": "workspace:*",
     "autoprefixer": "^10.4.16",
@@ -71,15 +79,7 @@
     "next": "^14.0.1",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
-    "tailwindcss": "3.3.5",
+    "tailwindcss": "^3",
     "typescript": "^5.2.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@use-search-params-state/eslint-config/base",
-      "@use-search-params-state/eslint-config/nextjs",
-      "@use-search-params-state/eslint-config/react"
-    ]
   }
 }

@@ -1,4 +1,5 @@
-import { useSearchParamsState as useSearchParamsStateReact, type UseSearchParamsStateOptions } from "@use-search-params-state/react";
+import { useSearchParamsState as useSearchParamsStateReact  } from "@use-search-params-state/react";
+import type {UseSearchParamsStateOptions} from "@use-search-params-state/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export const useSearchParamsState = (opts?: UseSearchParamsStateOptions) => {

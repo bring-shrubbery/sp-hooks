@@ -1,27 +1,36 @@
 {
   "name": "@use-search-params-state/react",
   "version": "0.0.0",
+  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/**"
   ],
-  "license": "MIT",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --external react",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react",
-    "lint": "tsc --noEmit",
     "clean": "git clean -xdf .next .turbo node_modules",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
   },
+  "dependencies": {
+    "dotenv-cli": "^7.3.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@use-search-params-state/eslint-config/base"
+    ],
+    "root": true
+  },
   "devDependencies": {
-    "@types/react": "^18.2.34",
-    "@types/react-dom": "^18.2.14",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@use-search-params-state/eslint-config": "workspace:*",
     "@use-search-params-state/tsconfig": "workspace:*",
-    "eslint": "^8.53.0",
+    "eslint": "^8",
     "next": "^14.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -31,8 +40,5 @@
   },
   "peerDependencies": {
     "react": "^18 | ^17"
-  },
-  "dependencies": {
-    "dotenv-cli": "^7.3.0"
   }
 }

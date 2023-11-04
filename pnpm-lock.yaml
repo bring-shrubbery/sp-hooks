@@ -51,6 +51,9 @@ importers:
       astro:
         specifier: ^3.2.3
         version: 3.4.2(typescript@5.2.2)
+      dotenv-cli:
+        specifier: ^7.3.0
+        version: 7.3.0
       sharp:
         specifier: ^0.32.5
         version: 0.32.6
@@ -168,21 +171,18 @@ importers:
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
+      dotenv-cli:
+        specifier: ^7.3.0
+        version: 7.3.0
       eslint:
         specifier: ^8.52.0
         version: 8.52.0
       lucide-react:
         specifier: ^0.291.0
         version: 0.291.0(react@18.2.0)
-      next:
-        specifier: ^14.0.1
-        version: 14.0.1(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)
       next-themes:
         specifier: ^0.2.1
         version: 0.2.1(next@14.0.1)(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
       react-day-picker:
         specifier: ^8.9.1
         version: 8.9.1(date-fns@2.30.0)(react@18.2.0)
@@ -220,9 +220,18 @@ importers:
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.31)
+      docs:
+        specifier: ^0.0.1
+        version: link:../docs
+      next:
+        specifier: ^14.0.1
+        version: 14.0.1(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
       tailwindcss:
         specifier: 3.3.5
         version: 3.3.5
@@ -235,6 +244,9 @@ importers:
       '@use-search-params-state/react':
         specifier: workspace:*
         version: link:../react
+      dotenv-cli:
+        specifier: ^7.3.0
+        version: 7.3.0
     devDependencies:
       '@types/react':
         specifier: ^18
@@ -271,6 +283,10 @@ importers:
         version: 3.22.4
 
   packages/react:
+    dependencies:
+      dotenv-cli:
+        specifier: ^7.3.0
+        version: 7.3.0
     devDependencies:
       '@types/react':
         specifier: ^18.2.34
@@ -4394,8 +4410,28 @@ packages:
     dependencies:
       esutils: 2.0.3
 
+  /dotenv-cli@7.3.0:
+    resolution: {integrity: sha512-314CA4TyK34YEJ6ntBf80eUY+t1XaFLyem1k9P0sX1gn30qThZ5qZr/ZwE318gEnzyYP9yj9HJk6SqwE0upkfw==}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+      dotenv: 16.3.1
+      dotenv-expand: 10.0.0
+      minimist: 1.2.8
+    dev: false
+
+  /dotenv-expand@10.0.0:
+    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+    engines: {node: '>=12'}
+    dev: false
+
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
     dev: false
 

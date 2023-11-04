@@ -11,13 +11,16 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --external react",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react",
-    "lint": "tsc"
+    "lint": "tsc --noEmit",
+    "clean": "git clean -xdf .next .turbo node_modules",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "devDependencies": {
-    "@use-search-params-state/eslint-config": "workspace:*",
-    "@use-search-params-state/tsconfig": "workspace:*",
     "@types/react": "^18.2.34",
     "@types/react-dom": "^18.2.14",
+    "@use-search-params-state/eslint-config": "workspace:*",
+    "@use-search-params-state/tsconfig": "workspace:*",
     "eslint": "^8.53.0",
     "next": "^14.0.1",
     "react": "^18.2.0",
@@ -27,7 +30,9 @@
     "zod": "^3.22.4"
   },
   "peerDependencies": {
-    "react": "^18 | ^17",
-    "react-dom": "^18 | ^17"
+    "react": "^18 | ^17"
+  },
+  "dependencies": {
+    "dotenv-cli": "^7.3.0"
   }
 }

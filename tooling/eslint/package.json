@@ -11,8 +11,7 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
-    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
-    "typecheck": "tsc --noEmit"
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\""
   },
   "dependencies": {
     "@next/eslint-plugin-next": "^14.0.1",

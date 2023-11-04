@@ -10,7 +10,6 @@
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix && manypkg fix",
     "publish": "pnpm build && changeset publish",
-    "typecheck": "turbo typecheck",
     "version": "changeset version"
   },
   "dependencies": {

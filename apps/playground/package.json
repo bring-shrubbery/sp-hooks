@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "pnpm with-env next build",
+    "build": "next build",
     "clean": "git clean -xdf .next .turbo node_modules",
-    "dev": "pnpm with-env next dev --port 3333",
+    "dev": "next dev --port 3333",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
     "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
-    "start": "pnpm with-env next start",
+    "start": "next start",
     "with-env": "dotenv -e ../../.env --"
   },
   "eslintConfig": {

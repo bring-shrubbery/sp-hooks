@@ -4,13 +4,13 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "pnpm with-env astro build",
+    "build": "astro build",
     "clean": "git clean -xdf .next .turbo node_modules",
-    "dev": "pnpm with-env astro dev",
+    "dev": "astro dev",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
     "lint": "dotenv -v SKIP_ENV_VALIDATION=1 astro check",
     "preview": "astro preview",
-    "start": "pnpm with-env astro dev",
+    "start": "astro dev",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {

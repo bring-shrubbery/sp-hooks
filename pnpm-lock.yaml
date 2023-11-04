@@ -18,10 +18,10 @@ importers:
         specifier: ^0.21.0
         version: 0.21.0
       '@use-search-params-state/eslint-config':
-        specifier: 0.2.0
+        specifier: workspace:*
         version: link:tooling/eslint
       eslint:
-        specifier: ^8
+        specifier: ^8.53.0
         version: 8.53.0
       prettier:
         specifier: ^3.0.3
@@ -156,10 +156,10 @@ importers:
         specifier: ^0.7.1
         version: 0.7.1(typescript@5.2.2)(zod@3.22.4)
       '@use-search-params-state/next':
-        specifier: 0.0.0
+        specifier: workspace:*
         version: link:../../packages/next
       '@use-search-params-state/react':
-        specifier: 0.0.0
+        specifier: workspace:*
         version: link:../../packages/react
       '@vercel/analytics':
         specifier: ^1.1.1
@@ -217,10 +217,10 @@ importers:
         specifier: ^18
         version: 18.2.14
       '@use-search-params-state/eslint-config':
-        specifier: 0.2.0
+        specifier: workspace:*
         version: link:../../tooling/eslint
       '@use-search-params-state/tsconfig':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../../tooling/typescript
       autoprefixer:
         specifier: ^10.4.16
@@ -247,7 +247,7 @@ importers:
   packages/next:
     dependencies:
       '@use-search-params-state/react':
-        specifier: 0.0.0
+        specifier: workspace:*
         version: link:../react
       dotenv-cli:
         specifier: ^7.3.0
@@ -260,22 +260,22 @@ importers:
         specifier: ^18
         version: 18.2.14
       '@use-search-params-state/eslint-config':
-        specifier: 0.2.0
+        specifier: workspace:*
         version: link:../../tooling/eslint
       '@use-search-params-state/tsconfig':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../../tooling/typescript
       eslint:
         specifier: ^8
         version: 8.53.0
       next:
-        specifier: ^14.0.1
+        specifier: ^14
         version: 14.0.1(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)
       react:
-        specifier: ^18.2.0
+        specifier: ^18
         version: 18.2.0
       react-dom:
-        specifier: ^18.2.0
+        specifier: ^18
         version: 18.2.0(react@18.2.0)
       tsup:
         specifier: ^7.2.0
@@ -300,10 +300,10 @@ importers:
         specifier: ^18
         version: 18.2.14
       '@use-search-params-state/eslint-config':
-        specifier: 0.2.0
+        specifier: workspace:*
         version: link:../../tooling/eslint
       '@use-search-params-state/tsconfig':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../../tooling/typescript
       eslint:
         specifier: ^8
@@ -361,10 +361,10 @@ importers:
         specifier: ^8
         version: 8.44.6
       '@use-search-params-state/prettier-config':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../prettier
       '@use-search-params-state/tsconfig':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../typescript
       eslint:
         specifier: ^8
@@ -388,7 +388,7 @@ importers:
         version: 0.5.6(@ianvs/prettier-plugin-sort-imports@4.1.1)(prettier@3.0.3)
     devDependencies:
       '@use-search-params-state/tsconfig':
-        specifier: 0.1.0
+        specifier: workspace:*
         version: link:../typescript
       typescript:
         specifier: ^5.2.2

@@ -4,6 +4,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://use-search-params-state.vercel.app/",
   integrations: [
     starlight({
       title: "use-search-params-state docs",

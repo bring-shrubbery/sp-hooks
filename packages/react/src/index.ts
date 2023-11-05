@@ -129,6 +129,12 @@ export interface UseSearchParamsStateOptions {
    * @default false
    */
   preserveInitialKeys?: boolean;
+
+  /**
+   * If true, keys will be sorted alphabetically.
+   * @default true
+   */
+  sortKeys?: boolean;
 }
 
 // const TestSchema = z.object({
@@ -183,6 +189,7 @@ export const useSearchParamsState = <
     removeDefaultValues: true,
     removeFalsyValues: true,
     preserveInitialKeys: false,
+    sortKeys: true,
     ...p,
   };
 
@@ -241,6 +248,10 @@ const getSearchParams = ({
 
     newSearchParams.set(k, v);
   });
+
+  if (options.sortKeys) {
+    newSearchParams.sort();
+  }
 
   return newSearchParams;
 };

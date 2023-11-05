@@ -9,7 +9,7 @@
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "release": "pnpm build:packages && changeset publish",
-    "lint": "turbo lint",
+    "lint": "turbo run lint",
     "lint:fix": "turbo lint:fix && manypkg fix",
     "version": "changeset version"
   },

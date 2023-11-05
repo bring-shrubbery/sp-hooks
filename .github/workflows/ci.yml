@@ -15,11 +15,11 @@ concurrency:
 # @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
 # env:
 #   FORCE_COLOR: 3
-#   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-#   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+#   TURBO_TOKEN: $ {{ secrets.TURBO_TOKEN }}
+#   TURBO_TEAM: $ {{ vars.TURBO_TEAM }}
 
 jobs:
-  lint:
+  build-packages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
       #   run: cp .env.example .env
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm build:packages
 
   format:
     runs-on: ubuntu-latest

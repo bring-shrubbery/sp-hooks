@@ -7,9 +7,9 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --external react --external next",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react --external next",
     "clean": "git clean -xdf .next .turbo node_modules",
     "lint": "eslint ./src",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react --external next",
     "with-env": "dotenv -e ../../.env --"
   },
   "eslintConfig": {

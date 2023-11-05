@@ -7,7 +7,7 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "next dev --port 3333",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
-    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
+    "lint": "next lint",
     "start": "next start",
     "with-env": "dotenv -e ../../.env --"
   },

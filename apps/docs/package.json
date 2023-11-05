@@ -8,7 +8,7 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "astro dev",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
-    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 astro check",
+    "lint": "astro check",
     "preview": "astro preview",
     "start": "astro dev",
     "with-env": "dotenv -e ../../.env --"

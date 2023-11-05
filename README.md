@@ -3,9 +3,10 @@
 ## Features
 
 - 🚀 `useState` hook that syncs the state with URL Search Params.
-- 🤓 Keeps search params clean by automatically removing default values.
+- 🤓 Keeps URL clean by automatically removing default values.
+- ⚡️ Accepts Zod schema for validation and parsing (WIP).
 - 😳 Built for React, with Next.js integration available.
-- ⚡️ Accepts Zod schema for validation and parsing.
+- 😇 Integrations for SvelteKit/Astro coming soon.
 
 ## Getting Started
 

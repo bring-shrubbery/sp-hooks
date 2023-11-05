@@ -15,6 +15,5 @@
   "devDependencies": {
     "@use-search-params-state/tsconfig": "workspace:*",
     "typescript": "^5.2.2"
-  },
-  "prettier": "@use-search-params-state/prettier-config"
+  }
 }

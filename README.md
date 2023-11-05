@@ -25,19 +25,19 @@
 Following example will render a button, which when clicked will toggle the button text between "hello" and "world". It will also update the search params to include the value, which means that after refreshing the page, the state will be preserved.
 
 ```tsx
-import { useSearchParamsState } from "@use-search-params-state/next"
+import { useSearchParamsState } from "@use-search-params-state/next";
 
 const Component = () => {
   const [state, setState] = useSearchParamsState();
 
   const handleClick = () => {
-    state.greeting === 'hello'
-      ? setState('greeting', 'world')
-      : setState('greeting', 'hello')
-  }
+    state.greeting === "hello"
+      ? setState("greeting", "world")
+      : setState("greeting", "hello");
+  };
 
-  return <button onClick={handleClick}>{state.greeting ?? 'hello'}</button>
-}
+  return <button onClick={handleClick}>{state.greeting ?? "hello"}</button>;
+};
 ```
 
 ### Next.js usage with default values
@@ -49,23 +49,23 @@ This example works in the same way functionally speaking. In the example above y
 - TypeScript will understand that you have `greeting` parameter available, and will autosuggest it for you.
 
 ```tsx
-import { useSearchParamsState } from "@use-search-params-state/next"
+import { useSearchParamsState } from "@use-search-params-state/next";
 
 const Component = () => {
   const [state, setState] = useSearchParamsState({
     defaultValues: {
-      greeting: 'hello'
-    }
+      greeting: "hello",
+    },
   });
 
   const handleClick = () => {
-    state.greeting === 'hello'
-      ? setState('greeting', 'world')
-      : setState('greeting', 'hello')
-  }
+    state.greeting === "hello"
+      ? setState("greeting", "world")
+      : setState("greeting", "hello");
+  };
 
-  return <button onClick={handleClick}>{state.greeting}</button>
-}
+  return <button onClick={handleClick}>{state.greeting}</button>;
+};
 ```
 
 ## Roadmap

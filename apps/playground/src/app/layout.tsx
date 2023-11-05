@@ -1,11 +1,13 @@
 import { Inter as FontSans } from "next/font/google";
 
 import "./globals.css";
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/toaster";
+
 import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+
 import { Sidebar } from "./sidebar";
 
 const fontSans = FontSans({
@@ -71,7 +73,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

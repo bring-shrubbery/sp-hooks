@@ -1,6 +1,7 @@
-import { useSearchParamsState as useSearchParamsStateReact  } from "@use-search-params-state/react";
-import type {UseSearchParamsStateOptions} from "@use-search-params-state/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+import { useSearchParamsState as useSearchParamsStateReact } from "@use-search-params-state/react";
+import type { UseSearchParamsStateOptions } from "@use-search-params-state/react";
 
 export const useSearchParamsState = (opts?: UseSearchParamsStateOptions) => {
   const searchParams = useSearchParams();
@@ -9,11 +10,11 @@ export const useSearchParamsState = (opts?: UseSearchParamsStateOptions) => {
 
   const setSearchParams = (newSearchParams: URLSearchParams) => {
     router.push(pathname + "?" + newSearchParams.toString());
-  }
+  };
 
   return useSearchParamsStateReact({
     searchParams,
     setSearchParams,
-    ...opts
+    ...opts,
   });
-}
+};

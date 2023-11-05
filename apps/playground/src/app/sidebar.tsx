@@ -1,6 +1,6 @@
-import { FileCodeIcon } from "lucide-react";
-import Link from "next/link";
 import type { PropsWithChildren } from "react";
+import Link from "next/link";
+import { FileCodeIcon } from "lucide-react";
 
 export const Sidebar = () => {
   return (
@@ -8,7 +8,9 @@ export const Sidebar = () => {
       <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul className="space-y-2 font-medium">
           <SidebarLink href="/basic">Basic</SidebarLink>
-          <SidebarLink href="/with-default-values">With default values</SidebarLink>
+          <SidebarLink href="/with-default-values">
+            With default values
+          </SidebarLink>
           <SidebarLink href="/with-zod">With Zod</SidebarLink>
         </ul>
       </div>

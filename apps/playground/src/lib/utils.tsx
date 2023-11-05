@@ -1,8 +1,7 @@
-import type { ClassValue} from "clsx";
+import { env } from "@/lib/env.mjs";
+import type { ClassValue } from "clsx";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-
-import { env } from "@/lib/env.mjs";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

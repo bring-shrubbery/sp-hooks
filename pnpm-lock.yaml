@@ -20,6 +20,9 @@ importers:
       '@use-search-params-state/eslint-config':
         specifier: workspace:*
         version: link:tooling/eslint
+      '@use-search-params-state/prettier-config':
+        specifier: workspace:*
+        version: link:tooling/prettier
       eslint:
         specifier: ^8.53.0
         version: 8.53.0

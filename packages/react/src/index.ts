@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { ReadonlyURLSearchParams } from "next/navigation";
 
-
 // export type SetStateType<S extends ZodObject<R>, R extends ZodRawShape> = <
 //   T extends ZodInfer<S>,
 //   K extends keyof T
@@ -106,7 +105,7 @@ export interface UseSearchParamsStateOptions {
   defaultValues?: Record<string, string>;
 
   /**
-   * Zod schema 
+   * Zod schema
    */
   // TODO: Implement Zod Validation
   // zodSchema?: ZodSchema ;
@@ -149,17 +148,14 @@ export interface UseSearchParamsStateOptions {
 //     // zodSchema: TestSchema
 //   })
 
-
-
 //   const hello = state.hello;
 
-  
 //   return null;
 // }
 
-
-
-const searchParamsToObject = (sp: URLSearchParams | ReadonlyURLSearchParams): Record<string, string> => {
+const searchParamsToObject = (
+  sp: URLSearchParams | ReadonlyURLSearchParams,
+): Record<string, string> => {
   const newObj: Record<string, string> = {};
 
   for (const key of Array.from(sp.keys())) {
@@ -169,9 +165,10 @@ const searchParamsToObject = (sp: URLSearchParams | ReadonlyURLSearchParams): Re
   }
 
   return newObj;
-}
+};
 
-export type UseSearchParamsStateParams = UseSerachParamsStateBase & UseSearchParamsStateOptions;
+export type UseSearchParamsStateParams = UseSerachParamsStateBase &
+  UseSearchParamsStateOptions;
 
 export const useSearchParamsState = <
   // ZodSchema extends ZodObject<ZodSchemaRaw>,
@@ -179,17 +176,14 @@ export const useSearchParamsState = <
   // ZodSchemaType extends ZodInfer<ZodSchema>,
   Params extends UseSearchParamsStateParams,
 >(
-  p: Params
-): [
-  Record<string, string>,
-  (key: string, value: string) => void
-] => {
+  p: Params,
+): [Record<string, string>, (key: string, value: string) => void] => {
   // Configure default values.
   const opts: Params = {
     removeDefaultValues: true,
     removeFalsyValues: true,
     preserveInitialKeys: false,
-    ...p
+    ...p,
   };
 
   const spObject = Object.assign(
@@ -204,30 +198,34 @@ export const useSearchParamsState = <
     const newObject = {
       ...spObject,
       [key]: value,
-    }
+    };
 
-    const newSearchParams = getSearchParams({ newObject, options: opts, initiallySetKeys })
+    const newSearchParams = getSearchParams({
+      newObject,
+      options: opts,
+      initiallySetKeys,
+    });
 
-    p.setSearchParams(newSearchParams)
+    p.setSearchParams(newSearchParams);
   };
 
   return [spObject, setState];
-}
+};
 
 const getSearchParams = ({
   newObject,
   options,
-  initiallySetKeys
+  initiallySetKeys,
 }: {
-  newObject: Record<string, string>, 
-  options: UseSearchParamsStateParams,
-  initiallySetKeys: string[],
+  newObject: Record<string, string>;
+  options: UseSearchParamsStateParams;
+  initiallySetKeys: string[];
 }) => {
   const newSearchParams = new URLSearchParams();
 
   Object.keys(newObject).forEach((k) => {
     const v = newObject[k];
-    if (typeof v === 'undefined') return;
+    if (typeof v === "undefined") return;
 
     // If the key was set initially, we want to set save it regardless of value.
     if (options.preserveInitialKeys && initiallySetKeys.includes(k)) {
@@ -244,8 +242,8 @@ const getSearchParams = ({
     newSearchParams.set(k, v);
   });
 
-  return newSearchParams
-}
+  return newSearchParams;
+};
 
 // export const createQueryStringFromSchema = <
 //   S extends ZodObject<R>,

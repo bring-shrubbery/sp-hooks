@@ -4,7 +4,6 @@
 
 The project is currently in the pre-release version. No security updates are promised before we reach v1.0.0. This does not imply that we'll promise timely security updates when we do reach v1.0.0.
 
-
 <!--
 | Version | Supported          |
 | ------- | ------------------ |

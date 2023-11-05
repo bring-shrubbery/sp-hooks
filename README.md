@@ -1,7 +1,5 @@
 # use-search-params-state
 
-![approximate implementation preview](./assets/estimated-implementation.png)
-
 ## Features
 
 - 🚀 `useState` hook that syncs the state with URL Search Params.

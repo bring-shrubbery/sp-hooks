@@ -1,5 +1,7 @@
 # use-search-params-state
 
+[![build](https://github.com/bring-shrubbery/use-search-params-state/actions/workflows/ci.yml/badge.svg)](https://github.com/bring-shrubbery/use-search-params-state/actions/workflows/ci.yml)
+
 ## Features
 
 - 🚀 `useState` hook that syncs the state with URL Search Params.

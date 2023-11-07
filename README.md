@@ -84,7 +84,7 @@ const Component = () => {
 - [ ] Zod default values.
 - [ ] Zod optional values.
 - [ ] Type-safe state from default values or when validation schema is provided.
-- [ ] More validation tools (yup, etc.)
+- [ ] More validation tools (yup, etc.).
 - [ ] Svelte/SvelteKit
 
 ## Credits

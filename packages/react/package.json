@@ -38,6 +38,6 @@
     "zod": "^3.22.4"
   },
   "peerDependencies": {
-    "react": "^18 | ^17"
+    "react": "^18 || ^17"
   }
 }

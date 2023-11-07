@@ -1,5 +1,13 @@
 # @use-search-params-state/next
 
+## 0.0.3
+
+### Patch Changes
+
+- 51764f2: Fixed peer dependencies versions
+- Updated dependencies [51764f2]
+  - @use-search-params-state/react@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @use-search-params-state/react
 
+## 0.0.3
+
+### Patch Changes
+
+- 51764f2: Fixed peer dependencies versions
+
 ## 0.0.2
 
 ### Patch Changes

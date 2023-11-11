@@ -70,6 +70,46 @@ const Component = () => {
 };
 ```
 
+### Next.js with Zod validation (coming soon)
+
+Here, before using the search params hook, we define Zod validation schema that we want to use for the search params validation. Then we only need to pass the schema into the `zodSchema` prop inside of our `useSearchParamsState`, and we're good to go! Now our state is fully type-safe, and if we define schema with `.catch` statements, then it even catches invalid values and falls back to default ones! Additionally, you get number types automatically by using `z.coerce` to parse numbers.
+
+```tsx
+"use client"
+import { useSearchParamsState } from "@use-search-params-state/next";
+import { z } from 'zod'
+
+const SearchParamsSchema = z.object({
+  page: z.coerce.number().catch(1),
+  perPage: z.coerce.number().catch(100),
+  search: z.string().optional(),
+})
+
+const Component = () => {
+  const [state, setState] = useSearchParamsState({
+    zodSchema: SearchParamsSchema
+  });
+
+  return <>
+    ...
+  </>;
+};
+
+// In a `page.tsx`:
+
+export default function Page({ searchParam }) {
+  const parsedParams = SearchParamsSchema.parse(searchParams);
+
+  const data = db.query(..., {
+    page: parsedParams.page,
+    perPage: parsedParams.perPage,
+    search: parsedParams.search,
+  });
+
+  return <Component data={data}/>
+}
+```
+
 ## Roadmap
 
 - [x] State comes from search params.
@@ -84,7 +124,7 @@ const Component = () => {
 - [ ] Zod default values.
 - [ ] Zod optional values.
 - [ ] Type-safe state from default values or when validation schema is provided.
-- [ ] More validation tools (yup, etc.)
+- [ ] More validation tools (yup, etc.).
 - [ ] Svelte/SvelteKit
 
 ## Credits

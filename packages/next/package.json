@@ -1,6 +1,6 @@
 {
   "name": "@use-search-params-state/next",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -36,7 +36,7 @@
     "zod": "^3.22.4"
   },
   "peerDependencies": {
-    "next": "^13 | ^14",
-    "react": "^18 | ^17"
+    "next": "^13 || ^14",
+    "react": "^18 || ^17"
   }
 }

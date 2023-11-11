@@ -74,35 +74,20 @@ import type { ReadonlyURLSearchParams } from "next/navigation";
 //   return schema.parse(createObjectFromSearchParams(params)) as T;
 // };
 
-/**
- * Requirements list
- *
- * - [x] Initial state comes from search params.
- * - [x] Initial state is set to default values if not present in search params (zod).
- * - [x] Hook exposes current state and setState function.
- * - [x] setState function updates state and calls saveSearchParams function after the state is updated.
- * - [ ] ??? State includes parameters in zod schema, extra props are not added or removed from searchParams.
- * - [ ] If no params are provided, they are not set until state is changed.
- * - [ ] saveSearchParams function updates search params outside of the hook.
- * - [ ] Optional parameters.
- * - [ ] SSR function to parse searchParams once.
- * - [ ] Zod schema should be optional, but if provided, it has to be type-safe.
- * - [x] Zod schema has to be an object first, even for single param.
- * - [ ] Array field support, allowing to have multi-value parameters.
- */
-
-export interface UseSerachParamsStateBase {
+export interface UseSearchParamsStateBase {
   searchParams: URLSearchParams | ReadonlyURLSearchParams;
   setSearchParams: (newSearchParams: URLSearchParams) => void;
 }
 
-export interface UseSearchParamsStateOptions {
+export interface UseSearchParamsStateOptions<State> {
   /**
    * Default values will be used in the case that the search param
    * you're accessing does not contain a value. We recommend always
    * providing default values for your search params.
    */
-  defaultValues?: Record<string, string>;
+  defaultValues?: State extends Record<string, string>
+    ? Record<string, string>
+    : { [K in keyof State]?: string };
 
   /**
    * Zod schema
@@ -137,28 +122,6 @@ export interface UseSearchParamsStateOptions {
   sortKeys?: boolean;
 }
 
-// const TestSchema = z.object({
-//   test1: z.coerce.string()
-// })
-
-// const testComponent = () => {
-//   const searchParams = new URLSearchParams();
-//   const setSearchParams = console.log;
-
-//   const [state, setState] = useSearchParamsState({
-//     searchParams,
-//     setSearchParams,
-//     defaultValues: {
-//       something: 'asdf'
-//     },
-//     // zodSchema: TestSchema
-//   })
-
-//   const hello = state.hello;
-
-//   return null;
-// }
-
 const searchParamsToObject = (
   sp: URLSearchParams | ReadonlyURLSearchParams,
 ): Record<string, string> => {
@@ -173,17 +136,21 @@ const searchParamsToObject = (
   return newObj;
 };
 
-export type UseSearchParamsStateParams = UseSerachParamsStateBase &
-  UseSearchParamsStateOptions;
+export type UseSearchParamsStateParams<State> = UseSearchParamsStateBase &
+  UseSearchParamsStateOptions<State>;
 
 export const useSearchParamsState = <
+  State extends
+    | { [K in keyof State]: string }
+    | Record<string, string> = Record<string, string>,
   // ZodSchema extends ZodObject<ZodSchemaRaw>,
   // ZodSchemaRaw extends ZodRawShape,
   // ZodSchemaType extends ZodInfer<ZodSchema>,
-  Params extends UseSearchParamsStateParams,
+  Params extends
+    UseSearchParamsStateParams<State> = UseSearchParamsStateParams<State>,
 >(
   p: Params,
-): [Record<string, string>, (key: string, value: string) => void] => {
+): [State, (key: keyof State, value: string) => void] => {
   // Configure default values.
   const opts: Params = {
     removeDefaultValues: true,
@@ -201,14 +168,14 @@ export const useSearchParamsState = <
 
   const [initiallySetKeys] = useState(Array.from(p.searchParams.keys()));
 
-  const setState = (key: string, value: string) => {
+  const setState = (key: keyof State, value: string) => {
     const newObject = {
       ...spObject,
       [key]: value,
     };
 
     const newSearchParams = getSearchParams({
-      newObject,
+      newObject: newObject as unknown as State,
       options: opts,
       initiallySetKeys,
     });
@@ -216,7 +183,7 @@ export const useSearchParamsState = <
     p.setSearchParams(newSearchParams);
   };
 
-  return [spObject, setState];
+  return [spObject as unknown as State, setState];
 };
 
 const getSearchParams = ({
@@ -225,7 +192,7 @@ const getSearchParams = ({
   initiallySetKeys,
 }: {
   newObject: Record<string, string>;
-  options: UseSearchParamsStateParams;
+  options: UseSearchParamsStateParams<Record<string, unknown>>;
   initiallySetKeys: string[];
 }) => {
   const newSearchParams = new URLSearchParams();

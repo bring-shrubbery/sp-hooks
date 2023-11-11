@@ -8,7 +8,7 @@ export const useSearchParamsState = <
     | { [K in keyof State]: string }
     | Record<string, string> = Record<string, string>,
 >(
-  opts?: UseSearchParamsStateOptions,
+  opts?: UseSearchParamsStateOptions<State>,
 ) => {
   const searchParams = useSearchParams();
   const router = useRouter();

@@ -12,6 +12,9 @@ export const Sidebar = () => {
             With default values
           </SidebarLink>
           <SidebarLink href="/with-zod">With Zod</SidebarLink>
+          <SidebarLink href="/with-weak-typesafety">
+            With weak type safety
+          </SidebarLink>
         </ul>
       </div>
     </aside>

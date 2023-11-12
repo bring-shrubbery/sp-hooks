@@ -1,5 +1,13 @@
 # @use-search-params-state/next
 
+## 0.0.4
+
+### Patch Changes
+
+- c6f9574: Added generic type parameter to the useSearchParamsState hooks
+- Updated dependencies [c6f9574]
+  - @use-search-params-state/react@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes

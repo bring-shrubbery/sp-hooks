@@ -1,5 +1,11 @@
 # @use-search-params-state/react
 
+## 0.0.5
+
+### Patch Changes
+
+- 2a8964c: Added array values feature
+
 ## 0.0.4
 
 ### Patch Changes

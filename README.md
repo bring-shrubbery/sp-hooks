@@ -19,6 +19,10 @@
 
 ## Getting Started
 
+### Step 1 ⭐️
+
+Before we start, don't forget to star this repo, thanks! 
+
 ### Next.js
 
 `pnpm add @use-search-params-state/next`

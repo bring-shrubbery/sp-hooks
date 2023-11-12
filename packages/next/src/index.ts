@@ -4,11 +4,9 @@ import { useSearchParamsState as useSearchParamsStateReact } from "@use-search-p
 import type { UseSearchParamsStateOptions } from "@use-search-params-state/react";
 
 export const useSearchParamsState = <
-  State extends
-    | { [K in keyof State]: string }
-    | Record<string, string> = Record<string, string>,
+  S extends Partial<Record<string, string | string[]>>,
 >(
-  opts?: UseSearchParamsStateOptions<State>,
+  opts?: UseSearchParamsStateOptions<S>,
 ) => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -18,7 +16,7 @@ export const useSearchParamsState = <
     router.push(pathname + "?" + newSearchParams.toString());
   };
 
-  return useSearchParamsStateReact<State>({
+  return useSearchParamsStateReact<S>({
     searchParams,
     setSearchParams,
     ...opts,

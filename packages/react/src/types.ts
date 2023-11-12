@@ -11,7 +11,7 @@ export interface UseSearchParamsStateOptions<State> {
    * you're accessing does not contain a value. We recommend always
    * providing default values for your search params.
    */
-  defaultValues?: Record<string, string>;
+  defaultValues?: Record<string, string | string[]>;
 
   /**
    * Zod schema

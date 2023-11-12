@@ -7,7 +7,7 @@ const Component1 = () => {
 
   const [state, setState] = useSearchParamsState<{
     greeting?: string;
-    hello: string;
+    hello: string[];
   }>({
     searchParams,
     setSearchParams: (newSearchParams) => {
@@ -19,7 +19,7 @@ const Component1 = () => {
   const handleClick = () => {
     state.greeting === "hello"
       ? setState("greeting", "world")
-      : setState("greeting", "hello");
+      : setState("hello", ["hello"]);
   };
 
   return <button onClick={handleClick}>{state.greeting ?? "hello"}</button>;
@@ -33,6 +33,7 @@ const Comp2 = () => {
   const [state, setState] = useSearchParamsState<{
     page: string;
     hello: string;
+    testArray: string[];
   }>({
     defaultValues: {
       hello: "world",
@@ -46,6 +47,8 @@ const Comp2 = () => {
 
   const handleClick = () => {
     state.page === "1" ? setState("page", "2") : setState("page", "1");
+
+    setState("testArray", ["hello", "world"]);
   };
 
   return <button onClick={handleClick}>{state.page}</button>;

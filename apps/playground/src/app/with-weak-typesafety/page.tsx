@@ -5,10 +5,12 @@ import { Alert } from "@/components/ui/alert";
 
 import { useSearchParamsState } from "@use-search-params-state/next";
 
-interface SearchParamsType {
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+type SearchParamsType = {
   page: string;
   search?: string;
-}
+  testArray?: string[];
+};
 
 export default function Page() {
   const [state, setState] = useSearchParamsState<SearchParamsType>({
@@ -16,6 +18,8 @@ export default function Page() {
       page: "1",
     },
   });
+
+  setState("page", "2");
 
   return (
     <div>

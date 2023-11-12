@@ -8,6 +8,7 @@ export const Sidebar = () => {
       <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul className="space-y-2 font-medium">
           <SidebarLink href="/basic">Basic</SidebarLink>
+          <SidebarLink href="/array-values">Array Values</SidebarLink>
           <SidebarLink href="/with-default-values">
             With default values
           </SidebarLink>

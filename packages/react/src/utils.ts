@@ -2,12 +2,14 @@ import type { ReadonlyURLSearchParams } from "next/navigation";
 
 import type { UseSearchParamsStateParams } from "./types";
 
-export const getSearchParams = ({
+export const getSearchParams = <
+  S extends Partial<Record<string, string | string[]>>,
+>({
   newObject,
   options,
   initiallySetKeys,
 }: {
-  newObject: Record<string, string>;
+  newObject: S;
   options: UseSearchParamsStateParams<Record<string, unknown>>;
   initiallySetKeys: string[];
 }) => {
@@ -19,7 +21,14 @@ export const getSearchParams = ({
 
     // If the key was set initially, we want to set save it regardless of value.
     if (options.preserveInitialKeys && initiallySetKeys.includes(k)) {
-      sp.set(k, v);
+      if (Array.isArray(v)) {
+        v.forEach((value) => {
+          sp.append(k, value);
+        });
+      } else {
+        sp.set(k, v);
+      }
+
       return;
     }
 
@@ -29,7 +38,13 @@ export const getSearchParams = ({
     // If the value is the default value and we want to remove default values, skip it.
     if (options.removeDefaultValues && v === options.defaultValues?.[k]) return;
 
-    sp.set(k, v);
+    if (Array.isArray(v)) {
+      v.forEach((value) => {
+        sp.append(k, value);
+      });
+    } else {
+      sp.set(k, v);
+    }
   });
 
   if (options.sortKeys) {
@@ -41,13 +56,19 @@ export const getSearchParams = ({
 
 export const searchParamsToObject = (
   sp: URLSearchParams | ReadonlyURLSearchParams,
-): Record<string, string> => {
-  const newObj: Record<string, string> = {};
+): Record<string, string | string[]> => {
+  const newObj: Record<string, string | string[]> = {};
 
   for (const key of Array.from(sp.keys())) {
-    const value = sp.get(key);
-    if (value === null) continue;
-    newObj[key] = value;
+    const values = sp.getAll(key);
+
+    if (values.length > 1) {
+      newObj[key] = values;
+    } else {
+      const value = values.at(0);
+      if (typeof value === "undefined") continue;
+      newObj[key] = value;
+    }
   }
 
   return newObj;

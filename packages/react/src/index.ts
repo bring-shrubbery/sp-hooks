@@ -20,17 +20,14 @@ export * from "./types";
 // };
 
 export const useSearchParamsState = <
-  State extends
-    | { [K in keyof State]: string }
-    | Record<string, string> = Record<string, string>,
+  S extends Partial<Record<string, string | string[]>>,
   // ZodSchema extends ZodObject<ZodSchemaRaw>,
   // ZodSchemaRaw extends ZodRawShape,
   // ZodSchemaType extends ZodInfer<ZodSchema>,
-  Params extends
-    UseSearchParamsStateParams<State> = UseSearchParamsStateParams<State>,
+  Params extends UseSearchParamsStateParams<S> = UseSearchParamsStateParams<S>,
 >(
   p: Params,
-): [State, (key: keyof State, value: string) => void] => {
+): [S, <K extends keyof S>(key: K, value: S[K]) => void] => {
   // Configure default values.
   const opts: Params = {
     removeDefaultValues: true,
@@ -48,14 +45,14 @@ export const useSearchParamsState = <
 
   const [initiallySetKeys] = useState(Array.from(p.searchParams.keys()));
 
-  const setState = (key: keyof State, value: string) => {
+  const setState = <K extends keyof S>(key: K, value: S[K]) => {
     const newObject = {
       ...spObject,
       [key]: value,
     };
 
-    const newSearchParams = getSearchParams({
-      newObject: newObject as unknown as State,
+    const newSearchParams = getSearchParams<S>({
+      newObject: newObject as unknown as S,
       options: opts,
       initiallySetKeys,
     });
@@ -63,5 +60,5 @@ export const useSearchParamsState = <
     p.setSearchParams(newSearchParams);
   };
 
-  return [spObject as unknown as State, setState];
+  return [spObject as unknown as S, setState];
 };

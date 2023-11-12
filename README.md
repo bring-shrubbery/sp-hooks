@@ -10,6 +10,13 @@
 - 😳 Built for React, with Next.js integration available.
 - 😇 Integrations for SvelteKit/Astro coming soon.
 
+## Packages
+
+| Package                        | Latest Version                                                                |
+| ------------------------------ | ----------------------------------------------------------------------------- |
+| @use-search-params-state/react | ![react-npm](https://img.shields.io/npm/v/%40use-search-params-state%2Freact) |
+| @use-search-params-state/next  | ![next-npm](https://img.shields.io/npm/v/%40use-search-params-state%2Fnext)   |
+
 ## Getting Started
 
 ### Next.js

@@ -1,5 +1,13 @@
 # @use-search-params-state/next
 
+## 0.0.5
+
+### Patch Changes
+
+- 2a8964c: Added array values feature
+- Updated dependencies [2a8964c]
+  - @use-search-params-state/react@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes

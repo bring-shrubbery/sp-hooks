@@ -1,4 +1,4 @@
-# @use-search-params-state/eslint-config
+# @sp-hooks/eslint-config
 
 ## 0.2.2
 

@@ -3,7 +3,7 @@
 import { SetKeyValueInputs } from "@/components/set-key-value-inputs";
 import { Alert } from "@/components/ui/alert";
 
-import { useSearchParamsState } from "@use-search-params-state/next";
+import { useSearchParamsState } from "@sp-hooks/next";
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 type SearchParamsType = {

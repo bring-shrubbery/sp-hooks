@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@use-search-params-state/tsconfig/base.json",
+  "extends": "@sp-hooks/tsconfig/base.json",
   "compilerOptions": {
     "incremental": false
   },

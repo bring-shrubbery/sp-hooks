@@ -1,4 +1,4 @@
-# @use-search-params-state/react
+# @sp-hooks/react
 
 ## 0.0.5
 

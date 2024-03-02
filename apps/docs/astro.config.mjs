@@ -4,24 +4,33 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://use-search-params-state.vercel.app/",
+  site: "https://sp-hooks.js.org/",
   integrations: [
     starlight({
-      title: "use-search-params-state docs",
+      title: "Search Params Hooks",
       social: {
-        github: "https://github.com/bring-shrubbery/use-search-params-state",
+        github: "https://github.com/bring-shrubbery/sp-hooks",
         discord: "https://discord.gg/fnp5zwCczT",
       },
       sidebar: [
         {
           label: "Getting started",
-          items: [],
+          items: [
+            { label: "Introduction", link: "/getting-started/introduction/" },
+            { label: "Starting with React", link: "/getting-started/react/" },
+            { label: "Starting with Next.js", link: "/getting-started/nextjs/" },
+          ],
         },
         {
           label: "Guides",
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", link: "/guides/example/" },
+            { label: "Basic", link: "/guides/basic/" },
+            { label: "With default values", link: "/guides/default-values" },
+            { label: "React Server Components (in Next.js)", link: "/guides/rsc" },
+            { label: "With validation (wip)", link: "/guides/validation" },
+            { label: "With Jotai", link: "/guides/jotai" },
+            { label: "With Zustand", link: "/guides/zustand" },
+            { label: "With Redux", link: "/guides/redux" }
           ],
         },
         {

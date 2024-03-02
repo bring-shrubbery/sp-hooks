@@ -3,14 +3,15 @@
 import { SetKeyValueInputs } from "@/components/set-key-value-inputs";
 import { Alert } from "@/components/ui/alert";
 
-import { useSearchParamsState } from "@use-search-params-state/next";
+import { useObserveAndStore } from "@sp-hooks/next";
+import { useState } from "react";
 
 export default function Page() {
-  const [state, setState] = useSearchParamsState({
-    defaultValues: {
-      hello: "world",
-    },
+  const [state, setState] = useState({
+    hello: "world",
   });
+
+  useObserveAndStore(state);
 
   return (
     <div>

@@ -1,6 +1,17 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 
-export type SupportedValueTypes = string | number | boolean | Date;
+export type SupportedValueTypes = number | string | boolean | Date | BigInt;
+export type SupportedArrayValueTypes =
+  | number[]
+  | string[]
+  | boolean[]
+  | Date[]
+  | BigInt[];
+export type SupportedJointValueArrayTypes = SupportedValueTypes[];
+export type SupportedValues =
+  | SupportedValueTypes
+  | SupportedArrayValueTypes
+  | SupportedJointValueArrayTypes;
 
 export interface UseSearchParamsStateBase {
   searchParams: URLSearchParams | ReadonlyURLSearchParams;
@@ -13,7 +24,7 @@ export interface UseSearchParamsStateOptions {
    * you're accessing does not contain a value. We recommend always
    * providing default values for your search params.
    */
-  defaultValues?: Record<string, SupportedValueTypes | SupportedValueTypes[]>;
+  defaultValues?: Record<string, SupportedValueTypes>;
 
   /**
    * Zod schema
@@ -38,6 +49,13 @@ export interface UseSearchParamsStateOptions {
    * @default true
    */
   sortKeys?: boolean;
+
+  /**
+   * If true, the URL will be updated instantly. If false, the URL
+   * will use useState hook to batch updates.
+   * @default false
+   */
+  instant?: boolean;
 }
 
 export type UseSearchParamsStateParams = UseSearchParamsStateBase &

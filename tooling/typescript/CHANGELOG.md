@@ -1,4 +1,4 @@
-# @use-search-params-state/tsconfig
+# @sp-hooks/tsconfig
 
 ## 0.1.1
 

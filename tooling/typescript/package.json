@@ -1,5 +1,5 @@
 {
-  "name": "@use-search-params-state/tsconfig",
+  "name": "@sp-hooks/tsconfig",
   "private": true,
   "version": "0.1.1",
   "files": [

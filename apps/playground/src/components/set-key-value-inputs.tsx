@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { PlusIcon } from "lucide-react";
 
 import { Badge } from "./ui/badge";
@@ -9,7 +9,7 @@ import { Label } from "./ui/label";
 export const SetKeyValueInputs = ({
   setState,
 }: {
-  setState: (key: string, value: string) => void;
+  setState: Dispatch<SetStateAction<Record<string, string | string[]>>>
 }) => {
   const [key, setKey] = useState("");
   const [value, setValue] = useState("");
@@ -36,7 +36,7 @@ export const SetKeyValueInputs = ({
         </div>
       </div>
 
-      <Button className="block" onClick={() => setState(key, value)}>
+      <Button className="block" onClick={() => setState((s) => ({...s, [key]: value}))}>
         Set
       </Button>
     </div>

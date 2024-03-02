@@ -1,5 +1,5 @@
 {
-  "name": "@use-search-params-state/eslint-config",
+  "name": "@sp-hooks/eslint-config",
   "version": "0.2.2",
   "private": true,
   "license": "MIT",
@@ -14,22 +14,22 @@
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\""
   },
   "dependencies": {
-    "@next/eslint-plugin-next": "^14.0.1",
-    "@typescript-eslint/eslint-plugin": "^6.9.1",
-    "@typescript-eslint/parser": "^6.9.1",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-config-turbo": "^1.10.16",
-    "eslint-plugin-import": "^2.29.0",
+    "@next/eslint-plugin-next": "^14.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-turbo": "^1.12.4",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
-    "@types/eslint": "^8",
-    "@use-search-params-state/prettier-config": "workspace:*",
-    "@use-search-params-state/tsconfig": "workspace:*",
-    "eslint": "^8",
-    "typescript": "^5.2.2"
+    "@types/eslint": "^8.56.3",
+    "@sp-hooks/prettier-config": "^0.1.1",
+    "@sp-hooks/tsconfig": "workspace:*",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
   },
   "eslintConfig": {
     "root": true,
@@ -37,5 +37,5 @@
       "./base.js"
     ]
   },
-  "prettier": "@use-search-params-state/prettier-config"
+  "prettier": "@sp-hooks/prettier-config"
 }

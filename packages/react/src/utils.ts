@@ -1,59 +1,13 @@
+import { useEffect, useState, type DependencyList } from "react";
 import type { ReadonlyURLSearchParams } from "next/navigation";
 
-import type { UseSearchParamsStateParams } from "./types";
+import { SupportedValues } from "./types";
 
-export const getSearchParams = <
-  S extends Partial<Record<string, string | string[]>>,
->({
-  newObject,
-  options,
-  initiallySetKeys,
-}: {
-  newObject: S;
-  options: UseSearchParamsStateParams<Record<string, unknown>>;
-  initiallySetKeys: string[];
-}) => {
-  const sp = new URLSearchParams();
-
-  Object.keys(newObject).forEach((k) => {
-    const v = newObject[k];
-    if (typeof v === "undefined") return;
-
-    // If the key was set initially, we want to set save it regardless of value.
-    if (options.preserveInitialKeys && initiallySetKeys.includes(k)) {
-      if (Array.isArray(v)) {
-        v.forEach((value) => {
-          sp.append(k, value);
-        });
-      } else {
-        sp.set(k, v);
-      }
-
-      return;
-    }
-
-    // If the value is falsy and we want to remove falsy values, skip it.
-    if (options.removeFalsyValues && !v) return;
-
-    // If the value is the default value and we want to remove default values, skip it.
-    if (options.removeDefaultValues && v === options.defaultValues?.[k]) return;
-
-    if (Array.isArray(v)) {
-      v.forEach((value) => {
-        sp.append(k, value);
-      });
-    } else {
-      sp.set(k, v);
-    }
-  });
-
-  if (options.sortKeys) {
-    sp.sort();
-  }
-
-  return sp;
-};
-
+/*
+ * Conerts a URLSearchParams object to a plain object, with
+ * the values being either a string or an array of strings,
+ * depending on the number of values for a given key.
+ */
 export const searchParamsToObject = (
   sp: URLSearchParams | ReadonlyURLSearchParams,
 ): Record<string, string | string[]> => {
@@ -73,3 +27,48 @@ export const searchParamsToObject = (
 
   return newObj;
 };
+
+/*
+ * Converts a plain object to a URLSearchParams object.
+ */
+export function stateToSearchParams<S extends Record<string, SupportedValues>>(
+  state: S,
+) {
+  const searchParams = new URLSearchParams();
+
+  Object.entries(state).forEach(([key, value]) =>
+    mutSetValueToSearchParams(searchParams, key, value),
+  );
+
+  return searchParams;
+}
+
+/*
+ * Observe a state object and call setSearchParams when the state changes.
+ */
+export function useObserveAndStore<S extends Record<string, SupportedValues>>(
+  state: S,
+  setSearchParams: (newSearchParams: URLSearchParams) => void,
+) {
+  useEffect(() => {
+    setSearchParams(stateToSearchParams(state));
+  }, Object.entries(state));
+}
+
+/*
+ * Accepts URLSearchParams as first parameter and a generic serialisable type as a second.
+ * Converts type to a string or an array of strings depending on the provided type and sets it in the URLSearchParams.
+ */
+export function mutSetValueToSearchParams(
+  sp: URLSearchParams,
+  key: string,
+  value: SupportedValues,
+) {
+  if (Array.isArray(value)) {
+    value.forEach((v) => {
+      sp.append(key, encodeURIComponent(v.toString()));
+    });
+  } else {
+    sp.set(key, encodeURIComponent(value.toString()));
+  }
+}

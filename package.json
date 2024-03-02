@@ -14,20 +14,20 @@
     "version": "changeset version"
   },
   "dependencies": {
-    "@use-search-params-state/eslint-config": "workspace:*",
-    "@use-search-params-state/prettier-config": "workspace:*",
-    "@changesets/cli": "^2.26.2",
+    "@changesets/cli": "^2.27.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
-    "@manypkg/cli": "^0.21.0",
-    "eslint": "^8.53.0",
-    "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.6",
+    "@manypkg/cli": "^0.21.2",
+    "@sp-hooks/eslint-config": "workspace:*",
+    "@sp-hooks/prettier-config": "workspace:*",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "turbo": "latest",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   },
   "packageManager": "pnpm@8.10.2",
   "engines": {
     "node": ">=v18.17.0"
   },
-  "prettier": "@use-search-params-state/prettier-config"
+  "prettier": "@sp-hooks/prettier-config"
 }

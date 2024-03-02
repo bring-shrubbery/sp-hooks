@@ -1,5 +1,5 @@
 {
-  "extends": "@use-search-params-state/tsconfig/base.json",
+  "extends": "@sp-hooks/tsconfig/base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

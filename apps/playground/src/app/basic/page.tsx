@@ -2,10 +2,17 @@
 
 import { SetKeyValueInputs } from "@/components/set-key-value-inputs";
 
-import { useSearchParamsState } from "@use-search-params-state/next";
+import { useObserveAndStore,  } from "@sp-hooks/next";
+import { searchParamsToObject } from "@sp-hooks/react"
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 export default function Page() {
-  const [state, setState] = useSearchParamsState();
+  const sp = useSearchParams();
+
+  const [state, setState] = useState(searchParamsToObject(sp));
+
+  useObserveAndStore(state);
 
   return (
     <div>

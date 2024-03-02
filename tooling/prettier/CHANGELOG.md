@@ -1,4 +1,4 @@
-# @use-search-params-state/prettier-config
+# @sp-hooks/prettier-config
 
 ## 0.1.1
 

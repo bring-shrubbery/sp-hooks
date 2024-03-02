@@ -1,5 +1,5 @@
 {
-  "name": "@use-search-params-state/next",
+  "name": "@sp-hooks/next",
   "version": "0.0.5",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -14,25 +14,25 @@
   },
   "eslintConfig": {
     "extends": [
-      "@use-search-params-state/eslint-config/base"
+      "@sp-hooks/eslint-config/base"
     ],
     "root": true
   },
   "dependencies": {
-    "@use-search-params-state/react": "workspace:*",
+    "@sp-hooks/react": "workspace:*",
     "dotenv-cli": "^7.3.0"
   },
   "devDependencies": {
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@use-search-params-state/eslint-config": "workspace:*",
-    "@use-search-params-state/tsconfig": "workspace:*",
-    "eslint": "^8",
-    "next": "^14",
-    "react": "^18",
-    "react-dom": "^18",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
+    "@types/react": "^18.2.58",
+    "@types/react-dom": "^18.2.19",
+    "@sp-hooks/eslint-config": "workspace:*",
+    "@sp-hooks/tsconfig": "workspace:*",
+    "eslint": "^8.56.0",
+    "next": "^14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3",
     "zod": "^3.22.4"
   },
   "peerDependencies": {

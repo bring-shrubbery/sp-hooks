@@ -1,25 +1,24 @@
 "use client";
 
+import { useState } from "react";
 import { SetKeyValueInputs } from "@/components/set-key-value-inputs";
 import { Alert } from "@/components/ui/alert";
+import { useObserveAndStore } from "@sp-hooks/next";
 
-import { useSearchParamsState } from "@sp-hooks/next";
-
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-type SearchParamsType = {
+interface SearchParamsType extends Record<string, string | string[]> {
   page: string;
-  search?: string;
-  testArray?: string[];
-};
+  search: string;
+  testArray: string[];
+}
 
 export default function Page() {
-  const [state, setState] = useSearchParamsState<SearchParamsType>({
-    defaultValues: {
-      page: "1",
-    },
+  const [state, setState] = useState<SearchParamsType>({
+    page: "1",
+    search: "",
+    testArray: [],
   });
 
-  setState("page", "2");
+  useObserveAndStore(state);
 
   return (
     <div>
@@ -29,9 +28,7 @@ export default function Page() {
         }
       </Alert>
 
-      <SetKeyValueInputs
-        setState={(k, v) => setState(k as keyof SearchParamsType, v)}
-      />
+      <SetKeyValueInputs setState={setState} />
 
       <pre>{JSON.stringify(state, null, 2)}</pre>
     </div>

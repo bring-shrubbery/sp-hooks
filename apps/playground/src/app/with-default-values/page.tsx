@@ -1,13 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { SetKeyValueInputs } from "@/components/set-key-value-inputs";
 import { Alert } from "@/components/ui/alert";
-
 import { useObserveAndStore } from "@sp-hooks/next";
-import { useState } from "react";
 
 export default function Page() {
-  const [state, setState] = useState({
+  const [state, setState] = useState<Record<string, string | string[]>>({
     hello: "world",
   });
 

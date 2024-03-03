@@ -6,10 +6,10 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
-export const SetKeyValueInputs = ({
+export const SetKeyValueInputs = <S extends Record<string, string | string[]>>({
   setState,
 }: {
-  setState: Dispatch<SetStateAction<Record<string, string | string[]>>>
+  setState: Dispatch<SetStateAction<S>>;
 }) => {
   const [key, setKey] = useState("");
   const [value, setValue] = useState("");
@@ -36,7 +36,10 @@ export const SetKeyValueInputs = ({
         </div>
       </div>
 
-      <Button className="block" onClick={() => setState((s) => ({...s, [key]: value}))}>
+      <Button
+        className="block"
+        onClick={() => setState((s) => ({ ...s, [key]: value }))}
+      >
         Set
       </Button>
     </div>

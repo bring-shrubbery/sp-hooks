@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { SetKeyValueArrayInputs } from "@/components/set-key-value-inputs";
 import { Alert } from "@/components/ui/alert";
-import { useObserverAndSearch } from "@sp-hooks/next";
+import { useObserveAndStore } from "@sp-hooks/next";
 
 export default function Page() {
-  const [state, setState] = useState();
+  const [state, setState] = useState({});
 
-  useObserverAndSearch(state);
+  useObserveAndStore(state);
 
   return (
     <div>

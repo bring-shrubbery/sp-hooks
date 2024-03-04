@@ -25,12 +25,12 @@
     "root": true
   },
   "devDependencies": {
-    "@types/react": "^18.2.58",
-    "@types/react-dom": "^18.2.19",
     "@sp-hooks/eslint-config": "workspace:*",
     "@sp-hooks/tsconfig": "workspace:*",
-    "eslint": "^8.56.0",
-    "next": "^14.1.0",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "eslint": "^8.57.0",
+    "next": "^14.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^8.0.2",

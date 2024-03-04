@@ -1,17 +1,11 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 
-export type SupportedValueTypes = number | string | boolean | Date | BigInt;
-export type SupportedArrayValueTypes =
-  | number[]
-  | string[]
-  | boolean[]
-  | Date[]
-  | BigInt[];
-export type SupportedJointValueArrayTypes = SupportedValueTypes[];
-export type SupportedValues =
-  | SupportedValueTypes
-  | SupportedArrayValueTypes
-  | SupportedJointValueArrayTypes;
+export type SupportedValueTypes = number | string | boolean | Date | bigint;
+export type SupportedValueArrayTypes = SupportedValueTypes[];
+export type SupportedValues = SupportedValueTypes | SupportedValueArrayTypes;
+
+// TODO: Replace string | string[] with SupportedValues
+export type SPHooksStateType = Record<string, string | string[]>;
 
 export interface UseSearchParamsStateBase {
   searchParams: URLSearchParams | ReadonlyURLSearchParams;

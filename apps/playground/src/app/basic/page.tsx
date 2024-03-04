@@ -1,11 +1,10 @@
 "use client";
 
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { SetKeyValueInputs } from "@/components/set-key-value-inputs";
 
-import { useObserveAndStore,  } from "@sp-hooks/next";
-import { searchParamsToObject } from "@sp-hooks/react"
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { searchParamsToObject, useObserveAndStore } from "@sp-hooks/next";
 
 export default function Page() {
   const sp = useSearchParams();

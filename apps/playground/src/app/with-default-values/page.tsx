@@ -1,21 +1,31 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { SetKeyValueInputs } from "@/components/set-key-value-inputs";
 import { Alert } from "@/components/ui/alert";
-import { useObserveAndStore } from "@sp-hooks/next";
+
+import { searchParamsToObject, useObserveAndStore } from "@sp-hooks/next";
+
+const defaultValues = {
+  hello: "world",
+};
 
 export default function Page() {
-  const [state, setState] = useState<Record<string, string | string[]>>({
-    hello: "world",
-  });
+  const sp = useSearchParams();
 
-  useObserveAndStore(state);
+  const [state, setState] = useState(
+    searchParamsToObject(sp, { defaultValues }),
+  );
+
+  useObserveAndStore(state, { defaultValues });
 
   return (
     <div>
       <Alert>
-        {'This page has a default value of "world" for the key "hello".'}
+        {
+          'This page has a default value of "world" for the key "hello". The key/value pair is removed from URL if its set to the default value.'
+        }
       </Alert>
 
       <SetKeyValueInputs setState={setState} />

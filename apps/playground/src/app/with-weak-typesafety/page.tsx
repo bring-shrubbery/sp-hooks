@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { SetKeyValueInputs } from "@/components/set-key-value-inputs";
 import { Alert } from "@/components/ui/alert";
-import { useObserveAndStore } from "@sp-hooks/next";
 
-interface SearchParamsType extends Record<string, string | string[]> {
+import { SPHooksStateType, useObserveAndStore } from "@sp-hooks/next";
+
+interface SearchParamsType extends SPHooksStateType {
   page: string;
   search: string;
   testArray: string[];

@@ -1,5 +1,18 @@
 # @sp-hooks/next
 
+## 0.1.0
+
+### Minor Changes
+
+- 79e7170: Releasing v0.1.0
+- 79e7170: Rebrand to sp-hooks + more functional approach.
+
+### Patch Changes
+
+- Updated dependencies [79e7170]
+- Updated dependencies [79e7170]
+  - @sp-hooks/react@0.1.0
+
 ## 0.0.5
 
 ### Patch Changes

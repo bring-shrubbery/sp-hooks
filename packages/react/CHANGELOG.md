@@ -1,5 +1,12 @@
 # @sp-hooks/react
 
+## 0.1.0
+
+### Minor Changes
+
+- 79e7170: Releasing v0.1.0
+- 79e7170: Rebrand to sp-hooks + more functional approach.
+
 ## 0.0.5
 
 ### Patch Changes

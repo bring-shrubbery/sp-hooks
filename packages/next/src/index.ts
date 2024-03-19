@@ -1,24 +1,23 @@
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-import { useSearchParamsState as useSearchParamsStateReact } from "@use-search-params-state/react";
-import type { UseSearchParamsStateOptions } from "@use-search-params-state/react";
+import { useObserveAndStore as useObserveAndStoreReact } from "@sp-hooks/react";
+import type { SPHooksStateType } from "@sp-hooks/react";
 
-export const useSearchParamsState = <
-  S extends Partial<Record<string, string | string[]>>,
->(
-  opts?: UseSearchParamsStateOptions<S>,
-) => {
-  const searchParams = useSearchParams();
+export * from "@sp-hooks/react";
+export type * from "@sp-hooks/react";
+
+export function useObserveAndStore<S extends SPHooksStateType>(
+  state: S,
+  options?: { defaultValues?: Partial<S> },
+) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const setSearchParams = (newSearchParams: URLSearchParams) => {
-    router.push(pathname + "?" + newSearchParams.toString());
-  };
-
-  return useSearchParamsStateReact<S>({
-    searchParams,
-    setSearchParams,
-    ...opts,
-  });
-};
+  useObserveAndStoreReact(
+    state,
+    (newSearchParams) => {
+      router.push(pathname + "?" + newSearchParams.toString());
+    },
+    options,
+  );
+}

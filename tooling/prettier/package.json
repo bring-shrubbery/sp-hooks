@@ -1,5 +1,5 @@
 {
-  "name": "@use-search-params-state/prettier-config",
+  "name": "@sp-hooks/prettier-config",
   "private": true,
   "version": "0.1.1",
   "main": "index.mjs",
@@ -8,12 +8,12 @@
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\""
   },
   "dependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
-    "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.6"
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.12"
   },
   "devDependencies": {
-    "@use-search-params-state/tsconfig": "workspace:*",
-    "typescript": "^5.2.2"
+    "@sp-hooks/tsconfig": "workspace:*",
+    "typescript": "^5.4.2"
   }
 }

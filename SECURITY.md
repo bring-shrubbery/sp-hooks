@@ -15,4 +15,4 @@ The project is currently in the pre-release version. No security updates are pro
 
 ## Reporting a Vulnerability
 
-If you find a vulnerability in this project, please create a ticket in the [Github repository](https://github.com/bring-shrubbery/use-search-params-state)https://github.com/bring-shrubbery/use-search-params-state.
+If you find a vulnerability in this project, please create a ticket in the [Github repository](https://github.com/bring-shrubbery/sp-hooks)https://github.com/bring-shrubbery/sp-hooks.

@@ -1,35 +1,38 @@
-# use-search-params-state
+# Search Params Hooks
 
-[![build](https://github.com/bring-shrubbery/use-search-params-state/actions/workflows/ci.yml/badge.svg)](https://github.com/bring-shrubbery/use-search-params-state/actions/workflows/ci.yml)
+[![build](https://github.com/bring-shrubbery/sp-hooks/actions/workflows/ci.yml/badge.svg)](https://github.com/bring-shrubbery/sp-hooks/actions/workflows/ci.yml)
 
 ## Features
 
-- 🚀 `useState` hook that syncs the state with URL Search Params.
+- 😌 Easily sync state to the URL Search Params and back again.
+- 💪 Use your own state manager.
 - 🤓 Keeps URL clean by automatically removing default values.
+- 😳 React Server Components ready.
+- 🚀 Next.js integration.
+- 🤯 Full TypeScript support.
+- 😇 Integrations for SvelteKit/Solid.js coming soon.
 - ⚡️ Accepts Zod schema for validation and parsing (WIP).
-- 😳 Built for React, with Next.js integration available.
-- 😇 Integrations for SvelteKit/Astro coming soon.
 
 ## Packages
 
-| Package                        | Latest Version                                                                |
-| ------------------------------ | ----------------------------------------------------------------------------- |
-| @use-search-params-state/react | ![react-npm](https://img.shields.io/npm/v/%40use-search-params-state%2Freact) |
-| @use-search-params-state/next  | ![next-npm](https://img.shields.io/npm/v/%40use-search-params-state%2Fnext)   |
+| Package           | Latest Version                                                 |
+| ----------------- | -------------------------------------------------------------- |
+| @usps-hooks/react | ![react-npm](https://img.shields.io/npm/v/%40sp-hooks%2Freact) |
+| @usps-hooks/next  | ![next-npm](https://img.shields.io/npm/v/%40sp-hooks%2Fnext)   |
 
 ## Getting Started
 
 ### Step 1 ⭐️
 
-Before we start, don't forget to star this repo, thanks! 
+Before we start, don't forget to star this repo and follow [@bring-shrubbery](https://github.com/bring-shrubbery), thanks!
 
 ### Next.js
 
-`pnpm add @use-search-params-state/next`
+`pnpm add @sp-hooks/next`
 
 ### React.js
 
-`pnpm add @use-search-params-state/react`
+`pnpm add @sp-hooks/react`
 
 ## Examples
 
@@ -38,18 +41,22 @@ Before we start, don't forget to star this repo, thanks!
 Following example will render a button, which when clicked will toggle the button text between "hello" and "world". It will also update the search params to include the value, which means that after refreshing the page, the state will be preserved.
 
 ```tsx
-import { useSearchParamsState } from "@use-search-params-state/next";
+import { useState } from "react";
+
+import { useObserveAndStore } from "@sp-hooks/next";
 
 const Component = () => {
-  const [state, setState] = useSearchParamsState();
+  const [state, setState] = useState({ greeting: "hello" });
+
+  useObserveAndStore(state);
 
   const handleClick = () => {
-    state.greeting === "hello"
-      ? setState("greeting", "world")
-      : setState("greeting", "hello");
+    const greeting = state.greeting === "hello" ? "world" : "hello";
+
+    setState({ greeting });
   };
 
-  return <button onClick={handleClick}>{state.greeting ?? "hello"}</button>;
+  return <button onClick={handleClick}>{state.greeting}</button>;
 };
 ```
 
@@ -62,7 +69,7 @@ This example works in the same way functionally speaking. In the example above y
 - TypeScript will understand that you have `greeting` parameter available, and will autosuggest it for you.
 
 ```tsx
-import { useSearchParamsState } from "@use-search-params-state/next";
+import { useSearchParamsState } from "@sp-hooks/next";
 
 const Component = () => {
   const [state, setState] = useSearchParamsState({
@@ -87,7 +94,7 @@ Here, before using the search params hook, we define Zod validation schema that 
 
 ```tsx
 "use client"
-import { useSearchParamsState } from "@use-search-params-state/next";
+import { useSearchParamsState } from "@sp-hooks/next";
 import { z } from 'zod'
 
 const SearchParamsSchema = z.object({

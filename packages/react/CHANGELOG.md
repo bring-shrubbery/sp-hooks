@@ -1,4 +1,4 @@
-# @use-search-params-state/react
+# @sp-hooks/react
 
 ## 0.0.5
 
@@ -28,4 +28,4 @@
 
 ### Patch Changes
 
-- c81587f: use-search-params-state mvp release
+- c81587f: sp-hooks mvp release

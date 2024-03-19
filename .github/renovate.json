@@ -3,7 +3,7 @@
   "extends": ["config:base"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@use-search-params-state/"],
+      "matchPackagePatterns": ["^@sp-hooks/"],
       "enabled": false
     }
   ],

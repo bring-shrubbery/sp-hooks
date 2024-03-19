@@ -1,8 +1,9 @@
 {
-  "extends": "@use-search-params-state/tsconfig/base.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@sp-hooks/tsconfig/base.json",
   "compilerOptions": {
     "incremental": false
   },
-  "include": ["."],
+  "include": ["./src"],
   "exclude": ["dist", "build", "node_modules"]
 }

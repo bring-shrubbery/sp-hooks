@@ -1,4 +1,4 @@
-# @use-search-params-state/eslint-config
+# @sp-hooks/eslint-config
 
 ## 0.2.2
 
@@ -10,4 +10,4 @@
 
 ### Patch Changes
 
-- c81587f: use-search-params-state mvp release
+- c81587f: sp-hooks mvp release

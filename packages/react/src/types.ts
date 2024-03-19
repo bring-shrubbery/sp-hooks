@@ -1,29 +1,19 @@
-import type { ReadonlyURLSearchParams } from "next/navigation";
+export type SupportedValueTypes = number | string | boolean | Date | bigint;
+export type SupportedValueArrayTypes = SupportedValueTypes[];
+export type SupportedValues = SupportedValueTypes | SupportedValueArrayTypes;
 
-export interface UseSearchParamsStateBase {
-  searchParams: URLSearchParams | ReadonlyURLSearchParams;
-  setSearchParams: (newSearchParams: URLSearchParams) => void;
-}
+// TODO: Replace string | string[] with SupportedValues
+export type SPHooksStateType = Record<string, string | string[]>;
 
-export interface UseSearchParamsStateOptions<State> {
+export interface ObserveAndStoreOptions<
+  S extends Record<string, SupportedValueTypes>,
+> {
   /**
    * Default values will be used in the case that the search param
    * you're accessing does not contain a value. We recommend always
    * providing default values for your search params.
    */
-  defaultValues?: Record<string, string | string[]>;
-
-  /**
-   * Zod schema
-   */
-  // TODO: Implement Zod Validation
-  // zodSchema?: ZodSchema ;
-
-  /**
-   * If true, default values will be removed from the search params.
-   * @default true
-   */
-  removeDefaultValues?: boolean;
+  defaultValues?: Partial<S>;
 
   /**
    * If true, falsy values will be removed from the search params.
@@ -32,19 +22,8 @@ export interface UseSearchParamsStateOptions<State> {
   removeFalsyValues?: boolean;
 
   /**
-   * If true, keys that were initially present in the search params
-   * will be preserved even if the removeDefaultValues and
-   * removeFalsyValues options are set to true.
-   * @default false
-   */
-  preserveInitialKeys?: boolean;
-
-  /**
    * If true, keys will be sorted alphabetically.
    * @default true
    */
   sortKeys?: boolean;
 }
-
-export type UseSearchParamsStateParams<State> = UseSearchParamsStateBase &
-  UseSearchParamsStateOptions<State>;

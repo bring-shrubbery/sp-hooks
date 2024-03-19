@@ -1,7 +1,7 @@
-# @use-search-params-state/tsconfig
+# @sp-hooks/tsconfig
 
 ## 0.1.1
 
 ### Patch Changes
 
-- c81587f: use-search-params-state mvp release
+- c81587f: sp-hooks mvp release

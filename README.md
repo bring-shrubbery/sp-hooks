@@ -1,6 +1,6 @@
 # Search Params Hooks
 
-[![build](https://github.com/bring-shrubbery/use-search-params-state/actions/workflows/ci.yml/badge.svg)](https://github.com/bring-shrubbery/use-search-params-state/actions/workflows/ci.yml)
+[![build](https://github.com/bring-shrubbery/sp-hooks/actions/workflows/ci.yml/badge.svg)](https://github.com/bring-shrubbery/sp-hooks/actions/workflows/ci.yml)
 
 ## Features
 
@@ -15,10 +15,10 @@
 
 ## Packages
 
-| Package           | Latest Version                                                                |
-| ----------------- | ----------------------------------------------------------------------------- |
-| @usps-hooks/react | ![react-npm](https://img.shields.io/npm/v/%40use-search-params-state%2Freact) |
-| @usps-hooks/next  | ![next-npm](https://img.shields.io/npm/v/%40use-search-params-state%2Fnext)   |
+| Package           | Latest Version                                                 |
+| ----------------- | -------------------------------------------------------------- |
+| @usps-hooks/react | ![react-npm](https://img.shields.io/npm/v/%40sp-hooks%2Freact) |
+| @usps-hooks/next  | ![next-npm](https://img.shields.io/npm/v/%40sp-hooks%2Fnext)   |
 
 ## Getting Started
 
@@ -42,6 +42,7 @@ Following example will render a button, which when clicked will toggle the butto
 
 ```tsx
 import { useState } from "react";
+
 import { useObserveAndStore } from "@sp-hooks/next";
 
 const Component = () => {

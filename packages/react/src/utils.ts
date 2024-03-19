@@ -61,7 +61,7 @@ export function stateToSearchParams<S extends SPHooksStateType>(
 export function useObserveAndStore<S extends SPHooksStateType>(
   state: S,
   setSearchParams: (newSearchParams: URLSearchParams) => void,
-  options?: { defaultValues?: Partial<S> },
+  options?: { defaultValues?: Partial<S> }, // TODO: Change this to ObserveAndStoreOptions
 ) {
   useEffect(() => {
     setSearchParams(stateToSearchParams(state, options));

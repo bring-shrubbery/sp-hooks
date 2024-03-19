@@ -1,5 +1,5 @@
 {
-  "name": "use-search-params-state",
+  "name": "sp-hooks",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -15,15 +15,15 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
-    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
-    "@manypkg/cli": "^0.21.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+    "@manypkg/cli": "^0.21.3",
     "@sp-hooks/eslint-config": "workspace:*",
     "@sp-hooks/prettier-config": "workspace:*",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.11",
-    "turbo": "latest",
-    "typescript": "^5.3.3"
+    "prettier-plugin-tailwindcss": "^0.5.12",
+    "turbo": "^1.12.5",
+    "typescript": "^5.4.2"
   },
   "packageManager": "pnpm@8.10.2",
   "engines": {

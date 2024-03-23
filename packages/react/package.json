@@ -27,14 +27,14 @@
   "devDependencies": {
     "@sp-hooks/eslint-config": "workspace:*",
     "@sp-hooks/tsconfig": "workspace:*",
-    "@types/react": "^18.2.67",
+    "@types/react": "^18.2.69",
     "@types/react-dom": "^18.2.22",
     "eslint": "^8.57.0",
-    "next": "^14.1.3",
+    "next": "^14.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^8.0.2",
-    "typescript": "^5.4.2",
+    "typescript": "^5.4.3",
     "zod": "^3.22.4"
   },
   "peerDependencies": {

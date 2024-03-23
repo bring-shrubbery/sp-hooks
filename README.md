@@ -4,7 +4,7 @@
 
 ## Features
 
-- 😌 Easily sync state to the URL Search Params and back again.
+- 😌 Sync state to the URL Search Params and back again.
 - 💪 Use your own state manager.
 - 🤓 Keeps URL clean by automatically removing default values.
 - 😳 React Server Components ready.
@@ -17,8 +17,8 @@
 
 | Package           | Latest Version                                                 |
 | ----------------- | -------------------------------------------------------------- |
-| @usps-hooks/react | ![react-npm](https://img.shields.io/npm/v/%40sp-hooks%2Freact) |
-| @usps-hooks/next  | ![next-npm](https://img.shields.io/npm/v/%40sp-hooks%2Fnext)   |
+| `@sp-hooks/react` | ![react-npm](https://img.shields.io/npm/v/%40sp-hooks%2Freact) |
+| `@sp-hooks/next`  | ![next-npm](https://img.shields.io/npm/v/%40sp-hooks%2Fnext)   |
 
 ## Getting Started
 
@@ -46,104 +46,34 @@ import { useState } from "react";
 import { useObserveAndStore } from "@sp-hooks/next";
 
 const Component = () => {
-  const [state, setState] = useState({ greeting: "hello" });
+  const [darkMode, setDarkMode] = useState(false);
 
-  useObserveAndStore(state);
+  useObserveAndStore({ darkMode });
 
-  const handleClick = () => {
-    const greeting = state.greeting === "hello" ? "world" : "hello";
-
-    setState({ greeting });
-  };
-
-  return <button onClick={handleClick}>{state.greeting}</button>;
+  return (
+    <button onClick={() => setDarkMode(!darkMode)}>
+      {darkMode ? "🌚" : "☀️"}
+    </button>
+  );
 };
-```
-
-### Next.js usage with default values
-
-This example works in the same way functionally speaking. In the example above you can see that we manually fall back on the default text value for ths button, but there's a better way. You can provide `defaultValues` parameter to the `useSearchParamsState` hook as seen below. This will do 3 things:
-
-- If no search params are provided, the `greeting` parameter will fall back the default value.
-- When `greeting` search param is set to the default value, that value will be removed from the URL, since your code will automatically fallback to that value (You can disable this behavior in options, [read more here](/#todo)).
-- TypeScript will understand that you have `greeting` parameter available, and will autosuggest it for you.
-
-```tsx
-import { useSearchParamsState } from "@sp-hooks/next";
-
-const Component = () => {
-  const [state, setState] = useSearchParamsState({
-    defaultValues: {
-      greeting: "hello",
-    },
-  });
-
-  const handleClick = () => {
-    state.greeting === "hello"
-      ? setState("greeting", "world")
-      : setState("greeting", "hello");
-  };
-
-  return <button onClick={handleClick}>{state.greeting}</button>;
-};
-```
-
-### Next.js with Zod validation (coming soon)
-
-Here, before using the search params hook, we define Zod validation schema that we want to use for the search params validation. Then we only need to pass the schema into the `zodSchema` prop inside of our `useSearchParamsState`, and we're good to go! Now our state is fully type-safe, and if we define schema with `.catch` statements, then it even catches invalid values and falls back to default ones! Additionally, you get number types automatically by using `z.coerce` to parse numbers.
-
-```tsx
-"use client"
-import { useSearchParamsState } from "@sp-hooks/next";
-import { z } from 'zod'
-
-const SearchParamsSchema = z.object({
-  page: z.coerce.number().catch(1),
-  perPage: z.coerce.number().catch(100),
-  search: z.string().optional(),
-})
-
-const Component = () => {
-  const [state, setState] = useSearchParamsState({
-    zodSchema: SearchParamsSchema
-  });
-
-  return <>
-    ...
-  </>;
-};
-
-// In a `page.tsx`:
-
-export default function Page({ searchParam }) {
-  const parsedParams = SearchParamsSchema.parse(searchParams);
-
-  const data = db.query(..., {
-    page: parsedParams.page,
-    perPage: parsedParams.perPage,
-    search: parsedParams.search,
-  });
-
-  return <Component data={data}/>
-}
 ```
 
 ## Roadmap
 
-- [x] State comes from search params.
-- [x] Set state updates search params.
-- [x] Default values.
-- [x] Option to remove search params if they are set to their default values.
-- [x] Remove falsy values.
-- [x] Preserve initial keys - keys are preserved in search params, if they were initially set.
+- [x] Store React state in URL Search Params.
 - [x] Next.js integration.
+- [ ] Default values (remove default values from URL).
+- [ ] Remove falsy values.
+- [ ] Preserve initial keys - keys are preserved in search params, if they were initially set.
 - [ ] Array values.
 - [ ] Zod validation.
-- [ ] Zod default values.
-- [ ] Zod optional values.
+  - [ ] Coercing into typed values.
+  - [ ] Zod default values.
+  - [ ] Zod optional values.
 - [ ] Type-safe state from default values or when validation schema is provided.
 - [ ] More validation tools (yup, etc.).
 - [ ] Svelte/SvelteKit
+- [ ] Solid
 
 ## Credits
 

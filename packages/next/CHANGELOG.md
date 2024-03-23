@@ -1,5 +1,13 @@
 # @sp-hooks/next
 
+## 0.1.1
+
+### Patch Changes
+
+- 69389ea: Minor dependency bump
+- Updated dependencies [69389ea]
+  - @sp-hooks/react@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes

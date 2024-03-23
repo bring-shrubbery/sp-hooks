@@ -1,6 +1,6 @@
 {
   "name": "@sp-hooks/eslint-config",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "license": "MIT",
   "files": [
@@ -25,7 +25,7 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
-    "@sp-hooks/prettier-config": "^0.2.0",
+    "@sp-hooks/prettier-config": "^0.2.1",
     "@sp-hooks/tsconfig": "workspace:*",
     "@types/eslint": "^8.56.6",
     "eslint": "^8.57.0",

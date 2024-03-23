@@ -1,5 +1,11 @@
 # @sp-hooks/eslint-config
 
+## 0.3.1
+
+### Patch Changes
+
+- 69389ea: Minor dependency bump
+
 ## 0.3.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @sp-hooks/prettier-config
 
+## 0.2.1
+
+### Patch Changes
+
+- 69389ea: Minor dependency bump
+
 ## 0.2.0
 
 ### Minor Changes
